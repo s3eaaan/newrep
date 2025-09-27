@@ -92,6 +92,12 @@
             position: fixed;
         }
 
+        #sidebar.open {
+            height: 0;
+            transition: height 0.2s ease-out;
+            overflow: hidden;
+        }
+
         #sidebar > ul > li > a {
             color: rgba(245, 245, 245, 0.909);
             text-decoration: none;
@@ -102,10 +108,6 @@
         #sidebar > ul > li > a:hover {
             color: rgba(245, 245, 220, 0.504);
             font-size: 25px;
-        }
-        
-        #sidebar > .current {
-            margin-left: 50%;
         }
 
         /*Nav bar buttons*/
@@ -151,6 +153,27 @@
             display: block;
         }
 
+        /* Nav bar toggle button */
+        .openbtn {
+            font-size: 17px;
+            cursor: pointer;
+            background-color: #242547;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            position: fixed;
+            margin-left: 87%;
+            z-index: 800;
+            top: 0;
+            right: 0;
+            transition: all 0.2s ease-out;
+            }
+
+        .openbtn:hover {
+            font-size: 22px;
+            transition: all 0.2s ease-out;
+        }
+
     </style>
 </head>
 <body>
@@ -169,10 +192,18 @@
             <li><a href="#draws">About Us</a></li>
         </ul>
     </div>
+    <div id = 'top'>
+        <button class="openbtn" onclick="openNav()">☰ Menu</button>   <!-- Click button to expand nav -->
+    </div>
     <div id = "intro">
         <h1>Henderson High School <br> Sports </h1>
     </div>
     <script>
+        function openNav() {
+            var sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("open");
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             var h1 = document.querySelector('#intro > h1');
             if (!h1) return;
