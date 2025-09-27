@@ -4,8 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        @media (min-width: 1025px) {
+            #intro {
+                background-attachment: fixed;
+            }
+        }
+
+        @media (min-width: 768px) {
+            #intro {
+                min-height: 250px;
+            }
+        }
+
+        #intro {
+            background-image: url('team.png');
+            position: relative;
+            overflow-x: auto;
+            overflow-y: auto;
+            word-wrap: break-word;
+            background-size: cover;
+            display: block;
+            padding-top: 20%;
+            padding-bottom: 20%;
+            top: -10px;
+            bottom: -10px;
+            width: 101.05%;
+            right: 8px;
+            opacity: 1;
+            background-image: linear-gradient(rgba(45, 52, 34, 0.4), rgba(199, 205, 218, 0.4)), url('team.png');
+            background-blend-mode: multiply;
+        }
+    </style>
 </head>
 <body>
-    
+    <div id = "intro">
+        <h1>This week's draws: </h1>
+    </div>
 </body>
 </html>
