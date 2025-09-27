@@ -85,17 +85,17 @@
             right: 0;
             padding-left: 18%;
             z-index: 800;
-            height: 100px;
-            overflow: visible;
+            height: 0;
+            overflow: hidden;
             transition: height 0.2s ease-out;
             top: 0;
             position: fixed;
         }
 
         #sidebar.open {
-            height: 0;
+            height: 100px;
             transition: height 0.2s ease-out;
-            overflow: hidden;
+            overflow: visible;
         }
 
         #sidebar > ul > li > a {
