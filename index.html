@@ -37,7 +37,6 @@
             opacity: 0.95;
             background-image: linear-gradient(rgba(45, 52, 34, 0.4), rgba(199, 205, 218, 0.4)), url('team.png');
             background-blend-mode: multiply;
-            margin-bottom: 1000px;
             text-align: center;
         }
 
@@ -202,6 +201,24 @@
             transition: all 0.2s ease-out;
         }
 
+
+        /*Latest News Section*/
+        #news {
+            background-color: #dccad0;
+            position: relative;
+            width: 101.05%;
+            right: 8px;
+            top: -50px;
+        }
+
+        #news > h1 {
+            padding-top: 150px;
+            text-align: center;
+            color: #241e20;
+            font-size: 60px;
+            font-family: "Cinzel", serif;
+        }
+
     </style>
 </head>
 <body>
@@ -226,6 +243,43 @@
     <div id = "intro">
         <h1>Henderson High School <br> Sports </h1>
         <button>About Us</button> 
+    </div>
+    <div id = "news">
+        <h1>Latest news: </h1>
+        <div class="card" id = "aa">
+            <div class="img-box">
+                <img src="https://www.hhs.school.nz/wp-content/uploads/2022/09/netball-2.jpg" alt="Netball" title="Netball" >
+            </div>
+            <div class="info">
+                <a href = "https://www.hhs.school.nz/2022/09/05/netball-2022-season/" target = "_blank"><button>Learn More</button></a>
+            </div>
+        </div>
+    
+        <div class="card"  id = "bb">
+            <div class="img-box">
+                <img src = "https://www.hhs.school.nz/wp-content/uploads/2022/05/277794950_1585773968471284_489610154858299640_n.jpg" height = "300px" width = "500px" alt = "Volleyball" title = "Volleyball">
+            </div>
+            <div class="info">
+                <a href = "https://www.hhs.school.nz/2022/05/05/volleyball-april-2022/" target = "_blank"><button>Learn More</button></a>
+            </div>
+        </div>
+        <div class="card" id = "aa">
+            <div class="img-box">
+                <img src="https://www.hhs.school.nz/wp-content/uploads/2022/09/netball-2.jpg" alt="Netball" title="Netball" >
+            </div>
+            <div class="info">
+                <a href = "https://www.hhs.school.nz/2022/09/05/netball-2022-season/" target = "_blank"><button>Learn More</button></a>
+            </div>
+        </div>
+    
+        <div class="card"  id = "bb">
+            <div class="img-box">
+                <img src = "https://www.hhs.school.nz/wp-content/uploads/2022/05/277794950_1585773968471284_489610154858299640_n.jpg" height = "300px" width = "500px" alt = "Volleyball" title = "Volleyball">
+            </div>
+            <div class="info">
+                <a href = "https://www.hhs.school.nz/2022/05/05/volleyball-april-2022/" target = "_blank"><button>Learn More</button></a>
+            </div>
+        </div>
     </div>
     <script>
         function openNav() {
