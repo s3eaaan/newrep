@@ -314,38 +314,70 @@
 
         /*GALLERY*/
 
-        /* relevant styles */
-        .img_container {
-        position: relative;
-        height: 430px;
-        width: 550px;
+        #gallery {
+            background-color: rgb(201, 195, 195);
+            width: 101.05%;
+            position: relative;
+            right: 8px;
+            top:-100px;
+            padding-top: 80px;
+            color: black;
+            font-size: 40px;
+            font-family: "Cinzel", serif;
+            padding-bottom: 140px;
         }
 
-        .img_description {
-        position: absolute;
-        top: -15px;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(197, 201, 203, 0.72);
-        color: #fff;
-        visibility: hidden;
-        opacity: 0;
-        transform: translateY(300px);
-        transition: opacity .3s, visibility .3s, transform .3s cubic-bezier(0.4,0,0.2,1);
+        #gallery > h1 {
+            margin-left: 140px;
+            margin-bottom: 100px;
         }
 
-        .img_container:hover .img_description {
-        visibility: visible;
-        opacity: 1;
-        transform: translateY(0);
+        .gallery_row {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 0.5px;
         }
 
-        img.main_image{
-            width: 550px;
+        .large_image {
+            width: 722px;
+            height: auto;
+            display: block;
         }
+
+        .small_image {
+            width: 420px;
+            height: 280px;
+            display: block;
+        }
+
+        /* Reuse your hover effect for .image_desc */
+        .gallery_item {
+            position: relative;
+        }
+
+        .image_desc {
+            position: absolute;
+            top: -40px;
+            left: 0; 
+            right: 0; 
+            bottom: 0;
+            width: 100%; height: 100%;
+            background: rgba(136, 141, 144, 0.72);
+            color: #fff;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity .6s, transform .6s cubic-bezier(0.4,0,0.2,1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery_item:hover .image_desc {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
     </style>
 </head>
 <body>
@@ -408,9 +440,21 @@
     </div>
     <div id = "gallery">
         <h1>Photo Gallery</h1>
-        <div class="img_container">
-            <img class="main_image" src="basketballteam.jpeg">
-            <p class="img_description">Lorem Ipsum</p>
+        <div class="gallery_row">
+            <div class="gallery_item">
+            <img class="large_image" src="basketballteam.jpeg">
+            <p class="image_desc">Description</p>
+        </div>
+        <div class="small_images_column">
+                <div class="gallery_item">
+                <img class="small_image" src="basketballteam.jpeg">
+                <p class="image_desc">Description</p>
+                </div>
+                <div class="gallery_item">
+                <img class="small_image" src="basketballteam.jpeg">
+                <p class="image_desc">Description</p>
+                </div>
+            </div>
         </div>
     </div>
     <script>
