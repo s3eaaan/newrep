@@ -35,6 +35,7 @@
             right: 8px;
             opacity: 0.95;
             background-image: linear-gradient(rgba(45, 52, 34, 0.4), rgba(199, 205, 218, 0.4)), url('hhslogolengthened.jpg');
+            background-position: center;
             background-blend-mode: multiply;
             text-align: center;
         }
@@ -98,6 +99,20 @@
             position: fixed;
             top: 4px;
             left: 0;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .logo-shown {
+            opacity: 1;
+            pointer-events: none;
+            transition: opacity 0.4s;
+        }
+
+        .logo-hidden {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s;
         }
 
         /*Styling nav bar*/ 
@@ -383,7 +398,7 @@
             padding-bottom: 80px;
             padding-left: 60px;
             top: -100px;
-            width: 101.05%;
+            width: 97.1%;
             right: 8px;
             background-image: url('team.png');
             position: relative;
@@ -571,6 +586,23 @@
             }, { threshold: 0.1 });
             observer.observe(h1);
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var intro = document.getElementById('intro');
+            var logo = document.querySelector('.logo');
+            var observer = new window.IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    logo.classList.add('logo-hidden');
+                    logo.classLis.remove('logo-shown');
+                } else {
+                    logo.classList.add('logo-shown');
+                    logo.classList.remove('logo-hidden');
+                }
+                });
+            }, { threshold: 0.1 });
+            observer.observe(intro);
+            });
     </script>
 </body>
 </html>
