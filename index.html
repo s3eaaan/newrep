@@ -204,7 +204,7 @@
 
         /*Latest News Section*/
         #news {
-            background-color: #dccad0;
+            background-color: #f2eeef;
             position: relative;
             width: 101.05%;
             right: 8px;
@@ -222,7 +222,7 @@
         .card {
             width: 450px;
             height: 600px;
-            background-color: #888888;
+            background-color: #aeababf1;
             border-radius: 8px;
             position: sticky;
             border-style: solid;
@@ -312,6 +312,40 @@
             cursor: pointer;
         }
 
+        /*GALLERY*/
+
+        /* relevant styles */
+        .img_container {
+        position: relative;
+        height: 430px;
+        width: 550px;
+        }
+
+        .img_description {
+        position: absolute;
+        top: -15px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(197, 201, 203, 0.72);
+        color: #fff;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(300px);
+        transition: opacity .3s, visibility .3s, transform .3s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .img_container:hover .img_description {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+        }
+
+        img.main_image{
+            width: 550px;
+        }
     </style>
 </head>
 <body>
@@ -347,7 +381,6 @@
                 <a href = "https://www.hhs.school.nz/2022/09/05/netball-2022-season/" target = "_blank"><button>Learn More</button></a>
             </div>
         </div>
-    
         <div class="card"  id = "bb">
             <div class="img-box">
                 <img src = "https://www.hhs.school.nz/wp-content/uploads/2022/05/277794950_1585773968471284_489610154858299640_n.jpg" height = "300px" width = "500px" alt = "Volleyball" title = "Volleyball">
@@ -364,7 +397,6 @@
                 <a href = "https://www.hhs.school.nz/2022/09/05/netball-2022-season/" target = "_blank"><button>Learn More</button></a>
             </div>
         </div>
-    
         <div class="card"  id = "bb">
             <div class="img-box">
                 <img src = "https://www.hhs.school.nz/wp-content/uploads/2022/05/277794950_1585773968471284_489610154858299640_n.jpg" height = "300px" width = "500px" alt = "Volleyball" title = "Volleyball">
@@ -372,6 +404,13 @@
             <div class="info">
                 <a href = "https://www.hhs.school.nz/2022/05/05/volleyball-april-2022/" target = "_blank"><button>Learn More</button></a>
             </div>
+        </div>
+    </div>
+    <div id = "gallery">
+        <h1>Photo Gallery</h1>
+        <div class="img_container">
+            <img class="main_image" src="basketballteam.jpeg">
+            <p class="img_description">Lorem Ipsum</p>
         </div>
     </div>
     <script>
