@@ -6,6 +6,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <title>Document</title>
     <style>
         @media (min-width: 1025px) {
@@ -208,6 +211,7 @@
             top: 0;
             right: 0;
             transition: all 0.2s ease-out;
+            font-family: "Inter", sans-serif;
             }
 
         .openbtn:hover {
@@ -227,6 +231,7 @@
             font-size: 40px;
             font-family: "Cinzel", serif;
             padding-bottom: 300px;
+            top: -15px;
         }
 
         #gallery > h1 {
@@ -345,18 +350,20 @@
             transition: 1s;
         }
 
-        .news {
+
+
+        .images {
             display: flex;
             position: relative;
             justify-content: right;
             margin-right: 80px;
             margin-bottom: 150px;
-            margin-top: 130px;
+            margin-top: 80px;
         }
 
         .main_img > img {
-            width: 800px;
-            height: 576px;
+            width: 750px;
+            height: 500px;
             border-radius: 6px;
             display: inline;
         }
@@ -398,6 +405,70 @@
             margin-left: 60px;
         }
 
+        /* News photo hover overlay */
+        .photo_container {
+            position: relative;
+            display: inline-block;
+        }
+        .photo_desc {
+            position: absolute;
+            top: 0; left: 60px; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s;
+            font-size: 2rem;
+            text-align: center;
+            pointer-events: none;
+            border-radius: 6px;
+            width: 400px;
+            height: 280px;
+            transform: translateY(40px);
+            transition: opacity .6s, transform .6s cubic-bezier(0.4,0,0.2,1);
+        }
+        .photo_container:hover .photo_desc {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0px);
+        }
+
+        .news > h1 {
+            font-size: 70px;
+            margin-top: 60px;
+            margin-left: 140px;
+            margin-bottom: 50px;
+            color:#241e20;
+        }
+
+        .news {
+            background-color: rgb(242, 239, 239);
+            width: 101%;
+            right: 8px;
+            position: relative;
+            padding-top: 120px;
+            top: -15px;
+            padding-bottom: 40px;
+        }
+
+        .main_img > h1, .main_img > h2, .main_img > h3 {
+            font-family: "Inter", sans-serif;
+            color: #241e20;
+            margin-top: 20px;
+            /* text-align: center; */
+        }
+
+        .main_img > h1 {
+            font-size: 22px;
+        }
+        
+        .main_img > h2 {
+            font-size: 14px;
+            color: #897f83;
+        }
+
     </style>
 </head>
 <body>
@@ -424,23 +495,55 @@
         <button>About Us</button> 
     </div>
     <div class="news">
-        <div class="main_img">
-            <img src="https://picsum.photos/id/1067/540/720">
-            <h1>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</h1>
-        </div>
-        <div class="slides">
-            <img src="https://picsum.photos/id/1067/540/720">
-            <img src="https://picsum.photos/id/122/540/720">
-            <img src="https://picsum.photos/id/188/540/720">
-            <img src="https://picsum.photos/id/249/540/720">
-            <img src="https://picsum.photos/id/257/540/720">
-            <img src="https://picsum.photos/id/259/540/720">
-            <img src="https://picsum.photos/id/283/540/720">
-            <img src="https://picsum.photos/id/288/540/720">
-            <img src="https://picsum.photos/id/299/540/720">
-        </div>
-        <div class="scrollbar">
-            <div class="thumb"></div>
+        <h1>HEADLINES:</h1>
+        <div class = "images">
+            <div class="main_img">
+                <img src="https://picsum.photos/id/1067/540/720">
+                <h3>Basketball</h3>
+                <h1>Henderson High School U19 Maroon Team: Waitakere Basketball Champions</h1>
+                <h2>animi optio a dolores fugit illum incidunt quibusdam expedita? Doloremque voluptates eum, ratione nemo iusto</h2>
+            </div>
+            <div class="slides">
+                <div class="photo_container">
+                    <img src="https://picsum.photos/id/1067/540/720">
+                    <div class="photo_desc">Description 1</div>
+                </div>
+                <div class="photo_container">
+                    <img src="https://picsum.photos/id/122/540/720">
+                    <div class="photo_desc">Description 2</div>
+                </div>
+                <div class="photo_container">
+                    <img src="https://picsum.photos/id/188/540/720">
+                    <div class="photo_desc">Description 3</div>
+                </div>
+                <div class="photo_container">
+                    <img src="https://picsum.photos/id/249/540/720">
+                    <div class="photo_desc">Description 4</div>
+                </div>
+                <div class="photo_container">
+                    <img src="https://picsum.photos/id/257/540/720">
+                    <div class="photo_desc">Description 5</div>
+                </div>
+                <div class="photo_container">
+                    <img src="https://picsum.photos/id/259/540/720">
+                    <div class="photo_desc">Description 6</div>
+                </div>
+                <div class="photo_container">
+                    <img src="https://picsum.photos/id/283/540/720">
+                    <div class="photo_desc">Description 7</div>
+                </div>
+                <div class="photo_container">
+                    <img src="https://picsum.photos/id/288/540/720">
+                    <div class="photo_desc">Description 8</div>
+                </div>
+                <div class="photo_container">
+                    <img src="https://picsum.photos/id/299/540/720">
+                    <div class="photo_desc">Description 9</div>
+                </div>
+            </div>
+            <div class="scrollbar">
+                <div class="thumb"></div>
+            </div>
         </div>
     </div>
     <div id = "gallery">
