@@ -219,72 +219,6 @@
             transition: all 0.2s ease-out;
         }
 
-        /*GALLERY*/
-
-        #gallery {
-            background-color: rgb(201, 195, 195);
-            width: 101.05%;
-            position: relative;
-            right: 8px;
-            padding-top: 120px;
-            color: black;
-            font-size: 40px;
-            font-family: "Cinzel", serif;
-            padding-bottom: 300px;
-            top: -15px;
-        }
-
-        #gallery > h1 {
-            margin-left: 140px;
-            margin-bottom: 100px;
-        }
-
-        .gallery_row {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 0.5px;
-        }
-
-        .large_image {
-            width: 770px;
-            height: auto;
-            display: block;
-        }
-
-        .small_image {
-            width: 470px;
-            height: 299px;
-            display: block;
-        }
-
-        /* Reuse your hover effect for .image_desc */
-        .gallery_item {
-            position: relative;
-        }
-
-        .image_desc {
-            position: absolute;
-            top: -40px;
-            left: 0; 
-            right: 0; 
-            bottom: 0;
-            width: 100%; height: 100%;
-            background: rgba(136, 141, 144, 0.72);
-            color: #fff;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity .6s, transform .6s cubic-bezier(0.4,0,0.2,1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .gallery_item:hover .image_desc {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
 
         /*DRAWS*/
         #draws {
@@ -350,8 +284,7 @@
             transition: 1s;
         }
 
-
-
+        /* News section */
         .images {
             display: flex;
             position: relative;
@@ -469,6 +402,114 @@
             color: #897f83;
         }
 
+        .sliders {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .arrow {
+            background: #e5dbc3;
+            border: none;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            cursor: pointer;
+            margin: 0 20px;
+            transition: background 0.2s;
+        }
+
+        .arrow:disabled {
+            opacity: 0.5;
+            cursor: default;
+        }
+
+        .slider-view {
+            overflow: hidden;
+            width: 1200px; /* 3 cards * 350px each */
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.4s cubic-bezier(.5,.03,.62,.97);
+            will-change: transform;
+        }
+
+        .slider-card {
+            flex: 0 0 378px;
+            background: white;
+            border-radius: 8px;
+            margin: 0 10px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            font-family: "Inter", sans-serif;
+        }
+
+        .slider-card img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .slider-card h3 {
+            font-size: 18px;
+            color: #9b2743;
+        }
+
+        .slider-card h1 {
+            font-size: 22px;
+            position: relative;
+            top: -20px;
+        }
+
+        .highlights > h1 {
+            text-align: center;
+            font-size: 70px;
+            color:#241e20;
+            margin-bottom: 120px;
+        }
+
+
+        .sports {
+            display: flex;
+            width: 99vw;
+            height: 750px;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            position: relative;
+            right: 8px;
+            margin-top: 200px;
+            gap: 0;
+            overflow: hidden;
+        }
+        .sports img {
+            flex: 0 1 80%; /* default: basis 80% of container / 3 */
+            min-width: 0;
+            object-fit: cover;
+            height: 100%;
+            cursor: pointer;
+            transition: flex-basis 0.4s cubic-bezier(.5,.03,.62,.97), filter 0.3s;
+            filter: brightness(0.95);
+            z-index: 1;
+        }
+        .sports img.expanded {
+            flex-basis: 90%;
+            z-index: 2;
+            filter: brightness(1.1);
+        }
+        .sports img.shrunk {
+            flex-basis: 60%;
+            filter: brightness(0.8);
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
@@ -546,25 +587,6 @@
             </div>
         </div>
     </div>
-    <div id = "gallery">
-        <h1>Photo Gallery</h1>
-        <div class="gallery_row">
-            <div class="gallery_item">
-            <img class="large_image" src="basketballteam.jpeg">
-            <p class="image_desc">Description</p>
-        </div>
-        <div class="small_images_column">
-                <div class="gallery_item">
-                <img class="small_image" src="basketballteam.jpeg">
-                <p class="image_desc">Description</p>
-                </div>
-                <div class="gallery_item">
-                <img class="small_image" src="basketballteam.jpeg">
-                <p class="image_desc">Description</p>
-                </div>
-            </div>
-        </div>
-    </div>
     <div id = "draws">
         <h1>Sports Draws: </h1>
         <div id = 'drawOne'>
@@ -588,8 +610,54 @@
             <p>Lorem ipsum dolor sit, <br> amet consectetur adipisicing elit. </p>
         </div>
     </div>
+    <div class = "highlights">
+        <h1>Sports Highlights</h1>
+        <div class="sliders">
+            <button class="arrow" id="arrow_left">&#8592;</button>
+            <div class="slider-view">
+                <div class="slider-track" id="slider-track">
+                    <!-- Repeat this card as needed -->
+                    <div class="slider-card">
+                        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=700&q=80" alt="">
+                        <h3>Men's Basketball</h3>
+                        <h1>Hansson Wins Ben Hogan Collegiate Invitational</h1>
+                    </div>
+                    <div class="slider-card">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=700&q=80" alt="">
+                        <h3>Men's Basketball</h3>
+                        <h1>Hansson Wins Ben Hogan Collegiate Invitational</h1>
+                    </div>
+                    <div class="slider-card">
+                        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=700&q=80" alt="">
+                        <h3>Men's Basketball</h3>
+                        <h1>Hansson Wins Ben Hogan Collegiate Invitational</h1>
+                    </div>
+                    <div class="slider-card">
+                        <img src="https://images.unsplash.com/photo-1519985176271-adb1088fa94c?auto=format&fit=crop&w=700&q=80" alt="">
+                        <h3>Men's Basketball</h3>
+                        <h1>Hansson Wins Ben Hogan Collegiate Invitational</h1>
+                    </div>
+                    <div class="slider-card">
+                        <img src="https://images.unsplash.com/photo-1519985176271-adb1088fa94c?auto=format&fit=crop&w=700&q=80" alt="">
+                        <h3>Men's Basketball</h3>
+                        <h1>Hansson Wins Ben Hogan Collegiate Invitational</h1>
+                    </div>
+                    <div class="slider-card">
+                        <img src="https://images.unsplash.com/photo-1519985176271-adb1088fa94c?auto=format&fit=crop&w=700&q=80" alt="">
+                        <h3>Men's Basketball</h3>
+                        <h1>Hansson Wins Ben Hogan Collegiate Invitational</h1>
+                    </div>
+                </div>
+            </div>
+            <button class="arrow" id="arrow_right">&#8594;</button>
+        </div>
+    </div>
+    <div class = "sports">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAIiqS7jGL6Y-WXPAKvpMrP9sk1jXcs6cE2g&s" alt="">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAIiqS7jGL6Y-WXPAKvpMrP9sk1jXcs6cE2g&s" alt="">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAIiqS7jGL6Y-WXPAKvpMrP9sk1jXcs6cE2g&s" alt="">
+    </div>
     <script>
-
         const slideGallery = document.querySelector('.slides');
         const slides = slideGallery.querySelectorAll('img');
         const scrollbarThumb = document.querySelector('.thumb');
@@ -643,6 +711,55 @@
 
         slideGallery.addEventListener('scroll', e => scrollThumb());
         scrollThumb();
+        
+        const track = document.getElementById('slider-track');
+        const left = document.getElementById('arrow_left');
+        const right = document.getElementById('arrow_right');
+        const cardWidth = 400; // 350px + 2*10px margin
+        const visibleCards = 3;
+        const totalCards = track.children.length;
+        let position = 0;
+
+        function updateArrows() {
+            left.disabled = position === 0;
+            right.disabled = position >= totalCards - visibleCards;
+        }
+
+        left.addEventListener('click', () => {
+            if (position > 0) {
+                position--;
+                track.style.transform = `translateX(-${position * cardWidth}px)`;
+                updateArrows();
+            }
+        });
+
+        right.addEventListener('click', () => {
+        if (position < totalCards - visibleCards) {
+            position++;
+            track.style.transform = `translateX(-${position * cardWidth}px)`;
+            updateArrows();
+        }
+        });
+
+        updateArrows();
+
+        document.querySelectorAll('.sports img').forEach(img => {
+        img.addEventListener('mouseenter', function() {
+            document.querySelectorAll('.sports img').forEach(other => {
+                other.classList.remove('expanded', 'shrunk');
+                if (other !== this) {
+                    other.classList.add('shrunk');
+                } else {
+                    this.classList.add('expanded');
+                }
+            });
+        });
+        img.addEventListener('mouseleave', function() {
+            document.querySelectorAll('.sports img').forEach(other => {
+                other.classList.remove('expanded', 'shrunk');
+            });
+        });
+    });
     </script>
 </body>
 </html>
