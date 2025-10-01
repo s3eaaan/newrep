@@ -477,39 +477,78 @@
         }
 
 
+
+        /* Container holds all three panels */
         .sports {
             display: flex;
-            width: 99vw;
+            width: 101%;
             height: 750px;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            position: relative;
-            right: 8px;
+            overflow: hidden;
+            position: absolute;
+            right: 0px;
             margin-top: 200px;
-            gap: 0;
+        }
+
+        /* Each panel takes equal space initially */
+        .panel {
+            flex: 1; /* Each panel gets equal width */
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            transition: flex 0.5s ease; /* Smooth expansion animation */
+            cursor: pointer;
             overflow: hidden;
         }
-        .sports img {
-            flex: 0 1 80%; /* default: basis 80% of container / 3 */
-            min-width: 0;
-            object-fit: cover;
-            height: 100%;
-            cursor: pointer;
-            transition: flex-basis 0.4s cubic-bezier(.5,.03,.62,.97), filter 0.3s;
-            filter: brightness(0.95);
-            z-index: 1;
+
+        /* Dark overlay for better text readability */
+        .panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            transition: background 0.5s ease;
         }
-        .sports img.expanded {
-            flex-basis: 90%;
+
+        /* Text centered in each panel */
+        .sport_desc {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 4em;
+            font-weight: bold;
+            text-align: center;
             z-index: 2;
-            filter: brightness(1.1);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            pointer-events: none;
         }
-        .sports img.shrunk {
-            flex-basis: 60%;
-            filter: brightness(0.8);
-            z-index: 1;
+
+        /* On hover, the panel expands to take more space */
+        .panel:hover {
+            flex: 3; /* Expands to 3x the size of others */
         }
+
+        .panel:hover::before {
+            background: rgba(0, 0, 0, 0.2); /* Lighter overlay on hover */
+        }
+
+        /* Background images for each panel */
+        .netball {
+            background-image: url('netball.png');
+        }
+
+        .football {
+            background-image: url('football.png');
+        }
+
+        .basketball {
+            background-image: url('basketball.png');
+        }
+
     </style>
 </head>
 <body>
@@ -652,10 +691,16 @@
             <button class="arrow" id="arrow_right">&#8594;</button>
         </div>
     </div>
-    <div class = "sports">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAIiqS7jGL6Y-WXPAKvpMrP9sk1jXcs6cE2g&s" alt="">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAIiqS7jGL6Y-WXPAKvpMrP9sk1jXcs6cE2g&s" alt="">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAIiqS7jGL6Y-WXPAKvpMrP9sk1jXcs6cE2g&s" alt="">
+    <div class="sports">
+        <div class="panel netball">
+            <div class="sport_desc">Netball</div>
+        </div>
+        <div class="panel football">
+            <div class="sport_desc">Football</div>
+        </div>
+        <div class="panel basketball">
+            <div class="sport_desc">Basketball</div>
+        </div>
     </div>
     <script>
         const slideGallery = document.querySelector('.slides');
@@ -742,24 +787,6 @@
         });
 
         updateArrows();
-
-        document.querySelectorAll('.sports img').forEach(img => {
-        img.addEventListener('mouseenter', function() {
-            document.querySelectorAll('.sports img').forEach(other => {
-                other.classList.remove('expanded', 'shrunk');
-                if (other !== this) {
-                    other.classList.add('shrunk');
-                } else {
-                    this.classList.add('expanded');
-                }
-            });
-        });
-        img.addEventListener('mouseleave', function() {
-            document.querySelectorAll('.sports img').forEach(other => {
-                other.classList.remove('expanded', 'shrunk');
-            });
-        });
-    });
     </script>
 </body>
 </html>
