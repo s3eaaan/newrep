@@ -87,7 +87,7 @@
             transform: translateY(0);
         }
 
-        /*TOP NAV BAR*/
+        /*LOGO STYLING*/
         .logo {
             display: inline;
             color: white;
@@ -115,7 +115,7 @@
             transition: opacity 0.4s;
         }
 
-        /*Styling nav bar*/ 
+        /*NAV BAR STYLING*/ 
         #sidebar {
             background-color: #9b2743;
             border-color: black;
@@ -215,117 +215,6 @@
             transition: all 0.2s ease-out;
         }
 
-
-        /*Latest News Section*/
-        #news {
-            background-color: #f2eeef;
-            position: relative;
-            width: 101.05%;
-            right: 8px;
-            top: -80px;
-        }
-
-        #news > h1 {
-            padding-top: 150px;
-            text-align: center;
-            color: #241e20;
-            font-size: 100px;
-            font-family: "Cinzel", serif;
-        }
-
-        .card {
-            width: 450px;
-            height: 600px;
-            background-color: #aeababf1;
-            border-radius: 8px;
-            position: sticky;
-            border-style: solid;
-            border-color: #241e20;
-            border-width: 3px 3px 3px 3px;
-            display: inline-block;
-            margin-top: 5%;
-            z-index: 0;
-            margin-right: 100px;
-            margin-bottom: 100px;
-        }
-
-        #news > #aa {
-            margin-left: 16%;
-        }
-
-        /* Contains the image */
-        .img-box {
-            position: absolute;
-            top: 15px;
-            bottom: 15px;
-            right: 15px;
-            left: 10px;
-            background-color: white;
-            transition: 0.5s;
-            z-index: 2;
-        }
-
-
-        .card p {
-            color: transparent;
-            display: none;
-        }
-
-        /* The image dimensions changes when the user hovers
-        and the hidden infomration shows up.*/
-
-        .card:hover .img-box {
-            top: 10px;
-            right: 10px;
-            bottom: 700px;
-            left: 10px;
-        }
-
-        /* Image size changes on hover*/
-
-        .card:hover img {
-            border-radius: 10px;
-        }
-
-        /* The image */
-        .card img {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            object-fit: cover;
-            border-style: solid;
-            border-color: #241e20;
-            border-width: 2px 2px 2px 2px;
-            opacity: 0.95;
-        }
-
-        /* Contains the name, designation and a button to contact */
-        .card .info {
-            position: absolute;
-            bottom: 40px;
-            right: 10px;
-            left: 10px;
-            text-align: center;
-            height: 80px;
-        }
-
-        /* The button to "LEARN MORE" */
-        .card button {
-            position: absolute;
-            background-color: #241e20;
-            border: none;
-            border-radius: 10px;
-            text-align: center;
-            margin-left: -10%;
-            bottom: 0;
-            font-size: 10px;
-            padding: 10px 15px;
-            color: #888888;
-            font-weight: bold;
-            font-family:  'Montserrat', sans-serif;
-            cursor: pointer;
-        }
-
         /*GALLERY*/
 
         #gallery {
@@ -333,12 +222,11 @@
             width: 101.05%;
             position: relative;
             right: 8px;
-            top:-100px;
             padding-top: 120px;
             color: black;
             font-size: 40px;
             font-family: "Cinzel", serif;
-            padding-bottom: 140px;
+            padding-bottom: 300px;
         }
 
         #gallery > h1 {
@@ -445,20 +333,61 @@
         #drawOne:hover, #drawTwo:hover, #drawThree:hover, #drawFour:hover {
             transform: scale(1.1);
         }
-
-        #drawOne > p, #drawOne > h3, #drawTwo > p, #drawTwo > h3, #drawThree > p, #drawThree > h3, #drawFour > h3, #drawFour > p  {
-            color: black;
-        }
-
+        
         #draws > h1 {
             margin-bottom: 1%;    
             font-size: 70px;
-            color: rgb(185, 180, 180);
+            color: #9b2743;
         }
 
         #draws > h1:hover {
             color: #9b2743;
             transition: 1s;
+        }
+
+        .news {
+            display: flex;
+            position: relative;
+            justify-content: right;
+            margin-right: 80px;
+            margin-bottom: 150px;
+            margin-top: 130px;
+        }
+
+        .scrollbar {
+            width: 1px;
+            height: 720px;
+            background: #ccc;
+            display: block;
+            margin: 0 0 0 8px;
+        }
+
+        .thumb {
+            width: 1px;
+            position: absolute;
+            height: 0;
+            background: #000;
+        }
+
+        .slides {
+            margin: 0 16px;
+            display: grid;
+            grid-auto-flow: row;
+            gap: 1rem;
+            padding: 0 0.25rem;
+            height: 720px;
+            overflow-y: auto;
+            overscroll-behavior-y: contain;
+            scroll-snap-type: y mandatory;
+            scrollbar-width: none;
+        }
+
+        .slides img {
+            width: 400px;
+            height: 280px;
+            scroll-snap-align: start;
+            position: relative;
+            border-radius: 6px;
         }
 
     </style>
@@ -486,39 +415,20 @@
         <h1>Henderson High School <br> Sports </h1>
         <button>About Us</button> 
     </div>
-    <div id = "news">
-        <h1>Latest news: </h1>
-        <div class="card" id = "aa">
-            <div class="img-box">
-                <img src="https://www.hhs.school.nz/wp-content/uploads/2022/09/netball-2.jpg" alt="Netball" title="Netball" >
-            </div>
-            <div class="info">
-                <a href = "https://www.hhs.school.nz/2022/09/05/netball-2022-season/" target = "_blank"><button>Learn More</button></a>
-            </div>
+    <div class="news">
+        <div class="slides">
+            <img src="https://picsum.photos/id/1067/540/720">
+            <img src="https://picsum.photos/id/122/540/720">
+            <img src="https://picsum.photos/id/188/540/720">
+            <img src="https://picsum.photos/id/249/540/720">
+            <img src="https://picsum.photos/id/257/540/720">
+            <img src="https://picsum.photos/id/259/540/720">
+            <img src="https://picsum.photos/id/283/540/720">
+            <img src="https://picsum.photos/id/288/540/720">
+            <img src="https://picsum.photos/id/299/540/720">
         </div>
-        <div class="card"  id = "bb">
-            <div class="img-box">
-                <img src = "https://www.hhs.school.nz/wp-content/uploads/2022/05/277794950_1585773968471284_489610154858299640_n.jpg" height = "300px" width = "500px" alt = "Volleyball" title = "Volleyball">
-            </div>
-            <div class="info">
-                <a href = "https://www.hhs.school.nz/2022/05/05/volleyball-april-2022/" target = "_blank"><button>Learn More</button></a>
-            </div>
-        </div>
-        <div class="card" id = "aa">
-            <div class="img-box">
-                <img src="https://www.hhs.school.nz/wp-content/uploads/2022/09/netball-2.jpg" alt="Netball" title="Netball" >
-            </div>
-            <div class="info">
-                <a href = "https://www.hhs.school.nz/2022/09/05/netball-2022-season/" target = "_blank"><button>Learn More</button></a>
-            </div>
-        </div>
-        <div class="card"  id = "bb">
-            <div class="img-box">
-                <img src = "https://www.hhs.school.nz/wp-content/uploads/2022/05/277794950_1585773968471284_489610154858299640_n.jpg" height = "300px" width = "500px" alt = "Volleyball" title = "Volleyball">
-            </div>
-            <div class="info">
-                <a href = "https://www.hhs.school.nz/2022/05/05/volleyball-april-2022/" target = "_blank"><button>Learn More</button></a>
-            </div>
+        <div class="scrollbar">
+            <div class="thumb"></div>
         </div>
     </div>
     <div id = "gallery">
@@ -564,6 +474,13 @@
         </div>
     </div>
     <script>
+
+        const slideGallery = document.querySelector('.slides');
+        const slides = slideGallery.querySelectorAll('img');
+        const scrollbarThumb = document.querySelector('.thumb');
+        const slideCount = slides.length;
+        const slideHeight = 720;
+
         function openNav() {
             var sidebar = document.getElementById("sidebar");
             sidebar.classList.toggle("open");
@@ -603,6 +520,14 @@
             }, { threshold: 0.1 });
             observer.observe(intro);
             });
+
+        const scrollThumb = () => {
+            const index = Math.floor(slideGallery.scrollTop / 220);
+            scrollbarThumb.style.height = `${((index + 1) / slideCount) * slideHeight}px`;
+        };
+
+        slideGallery.addEventListener('scroll', e => scrollThumb());
+        scrollThumb();
     </script>
 </body>
 </html>
