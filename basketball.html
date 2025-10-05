@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Page Layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+         @media (min-width: 1025px) {
+            #intro {
+                background-attachment: fixed;
+            }
+        }
+
+        @media (min-width: 768px) {
+            #intro {
+                min-height: 250px;
+            }
+        }
+
+        #intro {
+            position: relative;
+            overflow-x: auto;
+            overflow-y: auto;
+            word-wrap: break-word;
+            background-size: cover;
+            display: block;
+            padding-top: 15.5%;
+            padding-bottom: 20%;
+            top: -10px;
+            bottom: -10px;
+            width: 101.05%;
+            right: 8px;
+            opacity: 0.95;
+            background-image: linear-gradient(rgba(45, 52, 34, 0.4), rgba(199, 205, 218, 0.4)), url('hhslogolengthened.jpg');
+            background-position: center;
+            background-blend-mode: multiply;
+            text-align: center;
+        }
+
+        #intro > button {
+            background: #241e20;
+            color: white;
+            border: none;
+            border-radius: 999px;
+            padding: 16px 48px;
+            font-size: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            box-shadow: 5px 7px 10px #888888;
+            text-align: center;
+            display: inline-block;
+            transition: 0.4s all ease-in-out;
+            opacity: 0;
+            transform: translateX(-80px);
+            transition: opacity 1s cubic-bezier(0.4,0,0.2,1), transform 1s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        #intro > button.slide-in:hover {
+            transform: scale(1.2);
+            transition: 0.4s all ease-in-out;
+            cursor: pointer;
+        }
+
+        #intro > button.slide-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #intro > h1 {
+            color: rgba(255, 255, 255, 0.852);
+            text-align: center;
+            font-size: 90px;
+            font-family: "Cinzel", serif;
+            text-shadow: 2px 2px 4px #000000;
+            bottom: 60px;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-80px);
+            transition: opacity 1s cubic-bezier(0.4,0,0.2,1), transform 1s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        #intro > h1.slide-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /*LOGO STYLING*/
+        .logo {
+            display: inline;
+            color: white;
+            padding: 6px 26px 0;
+            z-index: 999;
+            height: 150px;
+            size: 40px;
+            width: 150px;
+            position: fixed;
+            top: 4px;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .logo-shown {
+            opacity: 1;
+            pointer-events: none;
+            transition: opacity 0.4s;
+        }
+
+        .logo-hidden {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s;
+        }
+
+        /*NAV BAR STYLING*/ 
+        #sidebar {
+            background-color: #9b2743;
+            border-color: black;
+            border-style: solid;
+            border-width: 1.5px;
+            position: relative;
+            left: 0;
+            right: 0;
+            padding-left: 18%;
+            z-index: 800;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.2s ease-out;
+            top: 0;
+            position: fixed;
+        }
+
+        #sidebar.open {
+            height: 100px;
+            transition: height 0.2s ease-out;
+            overflow: visible;
+        }
+
+        #sidebar > ul > li > a {
+            color: rgba(245, 245, 245, 0.909);
+            text-decoration: none;
+            font-size: 25px;
+            margin-right: 30px;
+        }
+
+        #sidebar > ul > li > a:hover {
+            color: rgba(245, 245, 220, 0.504);
+            font-size: 25px;
+        }
+
+        /*Nav bar buttons*/
+        ul {
+            margin-left: 48%;
+        }
+
+        ul li {
+            display: inline-block;
+            position: relative;
+        }
+
+        ul li a {
+            display: block;
+            padding: 20px 25px; 
+            color: rgba(245, 245, 245, 0.909);
+            text-decoration: none;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        ul > li > .dropdown > li {
+            display: block;
+            padding-right: 40px;
+        }
+
+        ul li ul.dropdown {
+            width: 100%;
+            background: #9b2743;
+            position: absolute;
+            z-index: 800;
+            display: none;
+            box-shadow: 1px 1px 1px 1px rgb(169,169,169) ;
+            margin-left: 30px;
+            margin-top: -5px;
+        }
+
+        ul li a:hover {
+            color: rgba(245, 245, 220, 0.504);
+        }
+
+        ul li:hover ul.dropdown {
+            display: block;
+        }
+
+        /* Nav bar toggle button */
+        .openbtn {
+            font-size: 17px;
+            cursor: pointer;
+            background-color: #241e20;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            position: fixed;
+            margin-left: 87%;
+            z-index: 800;
+            top: 0;
+            right: 0;
+            transition: all 0.2s ease-out;
+            font-family: "Inter", sans-serif;
+            }
+
+        .openbtn:hover {
+            font-size: 22px;
+            transition: all 0.2s ease-out;
+        }
+
+        .container {
+            max-width: 1800px;
+            margin: 0 7%;
+            padding: 30px 20px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .news {
+            flex: 2;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 24px;
+        }
+
+        .news h1 {
+            font-size: 50px;
+            margin-bottom: 30px;
+            color: #8B1538;
+        }
+
+        .photos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .photo_container {
+            background: #fafafa;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .photo_container img {
+            width: 100%;
+            max-width: 600px;
+            height: 500px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            object-fit: cover;  /* Add this to ensure proper image fitting */
+        }
+
+        @media (max-width: 700px) {
+            .photos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Schedule section styles unchanged from before except width added */
+        .schedule-section {
+            flex: 1;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+            min-width: 340px;
+            max-width: 400px;
+        }
+
+        .schedule-header {
+            background: #8B1538;
+            color: white;
+            padding: 20px;
+            border-radius: 12px 12px 0 0;
+            text-align: center;
+        }
+
+        .schedule-content {
+            background: white;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .game-item {
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            transition: background 0.2s;
+        }
+
+        .game-item:hover {
+            background: #f9f9f9;
+        }
+
+        .game-item:last-child {
+            border-bottom: none;
+        }
+
+        .game-date {
+            color: #8B1538;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+
+        .game-opponent {
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .game-location {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .view-full {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .view-full a {
+            color: #8B1538;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid #8B1538;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .view-full a:hover {
+            background: #8B1538;
+            color: white;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .schedule-section {
+                position: relative;
+                top: 0;
+                max-width: 100%;
+                min-width: 0;
+                width: 100%;
+            }
+            .news {
+                width: 100%;
+            }
+        }
+
+        /*PHOTOS START HERE*/
+
+        #gallery {
+            padding-left: 12%;
+            background-color: rgb(211, 204, 204);
+            padding-bottom: 100px;
+        }
+
+        #gallery > h1 {
+            font-size: 70px;
+            margin-top: 0;
+            padding-top: 100px;
+            margin-left: -1%;
+            margin-bottom: 50px;
+            color: rgb(46, 45, 45);
+        }
+
+        .photos {
+            width: 400px;
+            height: 600px;
+            overflow: hidden;
+            position: relative;
+            display: inline-block;
+            margin-right: -10px;
+            margin-bottom: 80px;
+        }
+
+        .childOne, .childTwo, .childThree {
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            transition: all 0.5s;
+        }
+
+        .childOne {
+            background-image: url('https://picsum.photos/id/1067/450/700');
+        }
+
+        .childTwo {
+            background-image: url('https://picsum.photos/id/122/450/700');
+        }
+
+        .childThree {
+            background-image: url('https://picsum.photos/id/1015/450/700');
+        }
+
+        .photos:hover .childOne, 
+        .photos:hover .childTwo, 
+        .photos:hover .childThree {
+            transform: scale(1.2);
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            z-index: 500;
+        }
+
+        .photo-caption h2 {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .photo-caption h3 {
+            font-size: 1em;
+            font-weight: 300;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <a href = 'https://www.hhs.school.nz/' target="_blank"><img src = 'hendersonhigh.png' alt = 'Henderson High School Logo' class = 'logo'></a>
+    <div id="sidebar">  <!-- Navbar -->
+        <ul>
+            <li><a href="index.html" id = 'current'>Home</a></li>
+            <li>
+                <a href="#" id = 'sports'>Sports ▾</a>
+                <ul class="dropdown">  <!-- Dropdown all sports -->
+                    <li><a href="basketball.html" target="_blank">Basketball</a></li>
+                    <li><a href="football.html" target="_blank">Football</a></li>
+                    <li><a href="hockey.html" target="_blank">Hockey</a></li>
+                </ul>
+            </li>
+            <li><a href="#draws">About Us</a></li>
+        </ul>
+    </div>
+    <div id = 'top'>
+        <button class="openbtn" onclick="openNav()">☰ Menu</button>   <!-- Click button to expand nav -->
+    </div>
+    <div id = "intro">
+        <h1>Henderson High School <br> Sports </h1>
+        <button>About Us</button> 
+    </div>
+    <div class="container">
+        <div class="news">
+            <h1>LATEST NEWS:</h1>
+            <div class="photos-grid">
+                <div class="photo_container">
+                    <img src="https://picsum.photos/id/1067/540/720">
+                    <p>Lorem ipsum dolor sit, amet consectetur </p>
+                </div>
+                <div class="photo_container">
+                    <img src="https://picsum.photos/id/122/540/720">
+                </div>
+                <div class="photo_container">
+                    <img src="https://picsum.photos/id/1015/540/720">
+                </div>
+                <div class="photo_container">
+                    <img src="https://picsum.photos/id/1016/540/720">
+                </div>
+            </div>
+        </div>
+        <div class="schedule-section">
+            <div class="schedule-header">
+                <h2>SCHEDULE</h2>
+            </div>
+            <div class="schedule-content">
+                <div class="game-item">
+                    <div class="game-date">OCT. 18 • 6 P.M.</div>
+                    <div class="game-details">
+                        <div class="team-logo">🏀</div>
+                        <div class="game-info">
+                            <div class="game-opponent">Men's Basketball</div>
+                            <div class="game-location">at LMU</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-item">
+                    <div class="game-date">OCT. 25 • 6:30 P.M.</div>
+                    <div class="game-details">
+                        <div class="team-logo">🏀</div>
+                        <div class="game-info">
+                            <div class="game-opponent">Men's Basketball</div>
+                            <div class="game-location">at Grand Canyon</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-item">
+                    <div class="game-date">OCT. 25 • 6:30 P.M.</div>
+                    <div class="game-details">
+                        <div class="team-logo">🏀</div>
+                        <div class="game-info">
+                            <div class="game-opponent">Men's Basketball</div>
+                            <div class="game-location">at Grand Canyon</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-item">
+                    <div class="game-date">OCT. 25 • 6:30 P.M.</div>
+                    <div class="game-details">
+                        <div class="team-logo">🏀</div>
+                        <div class="game-info">
+                            <div class="game-opponent">Men's Basketball</div>
+                            <div class="game-location">at Grand Canyon</div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+        </div>   
+    </div>  
+    <div id="gallery">
+        <h1>GALLERY</h1>
+        <div class="photos">
+            <div class="childOne"></div>
+            <div class="photo-caption">
+                <h2>Men's Basketball</h2>
+                <h3>April 28, 2024: Henderson vs Onehunga</h3>
+            </div>
+        </div>
+        <div class="photos">
+            <div class="childTwo"></div>
+            <div class="photo-caption">
+                <h2>Men's Basketball</h2>
+                <h3>April 28, 2024: Henderson vs Onehunga</h3>
+            </div>
+        </div>
+        <div class="photos">
+            <div class="childThree"></div>
+            <div class="photo-caption">
+                <h2>Men's Basketball</h2>
+                <h3>April 28, 2024: Henderson vs Onehunga</h3>
+            </div>
+        </div>
+    </div>
+    <script>
+        const slideGallery = document.querySelector('.slides');
+        const slides = slideGallery.querySelectorAll('img');
+        const scrollbarThumb = document.querySelector('.thumb');
+        const slideCount = slides.length;
+        const slideHeight = 720;
+
+        function openNav() {
+            var sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("open");
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var h1 = document.querySelector('#intro > h1');
+            var h2 = document.querySelector('#intro > button');
+            if (!h1) return;
+            var observer = new window.IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        h1.classList.add('slide-in');
+                        h2.classList.add('slide-in');
+                    } else {
+                        h1.classList.remove('slide-in');
+                        h2.classList.remove('slide-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+            observer.observe(h1);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var intro = document.getElementById('intro');
+            var logo = document.querySelector('.logo');
+            var observer = new window.IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    logo.classList.add('logo-hidden');
+                    logo.classLis.remove('logo-shown');
+                } else {
+                    logo.classList.add('logo-shown');
+                    logo.classList.remove('logo-hidden');
+                }
+                });
+            }, { threshold: 0.1 });
+            observer.observe(intro);
+            });
+
+        const scrollThumb = () => {
+            const index = Math.floor(slideGallery.scrollTop / 220);
+            scrollbarThumb.style.height = `${((index + 1) / slideCount) * slideHeight}px`;
+        };
+
+        slideGallery.addEventListener('scroll', e => scrollThumb());
+        scrollThumb();
+        
+        const track = document.getElementById('slider_track');
+        const left = document.getElementById('arrow_left');
+        const right = document.getElementById('arrow_right');
+        const cardWidth = 400; // 350px + 2*10px margin
+        const visibleCards = 3;
+        const totalCards = track.children.length;
+        let position = 0;
+
+        function updateArrows() {
+            left.disabled = position === 0;
+            right.disabled = position >= totalCards - visibleCards;
+        }
+
+        left.addEventListener('click', () => {
+            if (position > 0) {
+                position--;
+                track.style.transform = `translateX(-${position * cardWidth}px)`;
+                updateArrows();
+            }
+        });
+
+        right.addEventListener('click', () => {
+        if (position < totalCards - visibleCards) {
+            position++;
+            track.style.transform = `translateX(-${position * cardWidth}px)`;
+            updateArrows();
+        }
+        });
+
+        updateArrows();
+    </script>
+</body>
