@@ -1,304 +1,279 @@
+/* BASE STYLES */
 body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Make sure that there no horizontal scrolling */
+    width: 100%; /* Full viewport width */
 }
 
-@media (min-width: 1025px) {
-    #intro {
-        background-attachment: fixed;
-    }
+/* INTRO/HERO SECTION */
+#intro {
+    position: relative; /* Relative to norm pos */
+    overflow: auto; /* Enable scrollbar if need */
+    word-wrap: break-word; /* Break long words to prevent overflow */
+    background-size: cover; /* Make image in the background cover whole page */
+    background-position: center; /* Center the background image */
+    background-blend-mode: multiply; /* Blend background with overlay */
+    display: block; /* Display as block */
+    padding: 15.5% 0 20%; /* Top and bottom padding */
+    inset: -10px 0 -10px 0;
+    width: 101.05%; /* Slightly wider to prevent gaps */
+    opacity: 0.95; /* Make text easier to read */
+    text-align: center;
 }
 
+/* Responsiveness for introduction section */
 @media (min-width: 768px) {
     #intro {
-        min-height: 250px;
+        min-height: 250px; /* Minimum height of 250px */
     }
 }
 
-#intro {
-    position: relative;
-    overflow-x: auto;
-    overflow-y: auto;
-    word-wrap: break-word;
-    background-size: cover;
-    display: block;
-    padding-top: 15.5%;
-    padding-bottom: 20%;
-    top: -10px;
-    bottom: -10px;
-    width: 101.05%;
-    opacity: 0.95;
-    background-position: center;
-    background-blend-mode: multiply;
-    text-align: center;
+/* Paralax effect */
+@media (min-width: 1025px) {
+    #intro {
+        background-attachment: fixed; /* Background stays the same while scrolling */
+    }
 }
 
-#intro > button {
-    background: #241e20;
-    color: white;
-    border: none;
-    border-radius: 999px;
-    padding: 16px 48px;
-    font-size: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: bold;
-    box-shadow: 5px 7px 10px #888888;
-    text-align: center;
-    display: inline-block;
-    transition: 0.4s all ease-in-out;
-    opacity: 0;
-    transform: translateX(-80px);
+/*  INTRO ANIMATIONS */
+
+/* Slide-in animation for aesthetics */
+#intro > button, #intro > h1 {
+    opacity: 0; /* Initially invisible */
+    transform: translateX(-80px); /* Will move from left to right */
     transition: opacity 1s cubic-bezier(0.4,0,0.2,1), transform 1s cubic-bezier(0.4,0,0.2,1);
 }
 
+/* Animation slide in */
+#intro > button.slide-in, #intro > h1.slide-in {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Moved to the right */
+}
+
+/* INTRO BUTTON  */
+#intro > button {
+    background: #241e20;
+    border: none; /* Remove default button border */
+    border-radius: 999px; /* Very round buttn */
+    padding: 16px 48px;
+    font-size: 20px; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    box-shadow: 5px 7px 10px #888888; /* Shadow effect */
+    text-align: center; /* Center text inside button */
+    display: inline-block;
+}
+
+/* Button Hover effect */
 #intro > button.slide-in:hover {
-    transform: scale(1.2);
+    transform: scale(1.2); /* Make but bigger onhover */
     transition: 0.4s all ease-in-out;
-    cursor: pointer;
+    cursor: pointer; /* Show pointer cursor */
 }
 
-#intro > button.slide-in {
-    opacity: 1;
-    transform: translateY(0);
+/* Button link styling */
+#intro > button > a {
+    color: white; /* White text color */
+    text-decoration: none; /* Remove underline from link */
 }
 
+/* INTRO HEADING */
 #intro > h1 {
     color: rgba(255, 255, 255, 0.852);
     text-align: center;
     font-size: 90px;
     font-family: 'Times New Roman', Times, serif;
-    text-shadow: 2px 2px 4px #000000;
-    bottom: 60px;
-    position: relative;
-    opacity: 0;
-    transform: translateX(-80px);
-    transition: opacity 1s cubic-bezier(0.4,0,0.2,1), transform 1s cubic-bezier(0.4,0,0.2,1);
+    text-shadow: 2px 2px 4px #000000; /* Text shadow for depth */
+    bottom: 60px; /* Adjusted it to center */
+    position: relative; /* Positioned relative to normal */
 }
 
-#intro > h1.slide-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/*LOGO STYLING*/
+/* LOGO CONFIG */
 .logo {
-    display: inline;
+    display: inline; /* Inline with nav */
     color: white;
     padding: 6px 26px 0;
-    z-index: 999;
+    z-index: 999; /* Make sure its above every element on intersect */
     height: 150px;
-    size: 40px;
     width: 150px;
-    position: fixed;
-    top: 4px;
-    left: 0;
-    opacity: 0;
+    position: fixed; /* stays in place when scrolling */
+    inset: 4px 0 0 0;
+    opacity: 0; /* Initially invisible so more pleasing */
+    pointer-events: none; /* Disable mouse interactions */
     transition: opacity 0.4s;
 }
 
-.logo-shown {
-    opacity: 1;
-    pointer-events: none;
-    transition: opacity 0.4s;
-}
+/* Logo visible state */
+.logo-shown { opacity: 1;}
 
-.logo-hidden {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s;
-}
-
-/*NAV BAR STYLING*/ 
-#sidebar {
+/* NAVIGATION BAR CONFIG */
+#navbar {
     background-color: #9b2743;
     border: 0.09375rem solid black;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
+    position: fixed; /* Stays at top when scrolling */
+    inset: 0 0 0 0;
     padding-left: 18%;
-    z-index: 800;
-    height: 0;
-    overflow: hidden;
+    z-index: 800; /* High stacking order */
+    height: 0; /* Initially collapsed */
+    overflow: hidden; /* Hide content when collapsed */
     transition: height 0.2s ease-out;
-        font-family: 'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-#sidebar.open {
-    height: 6.25rem;
-    overflow: visible;
-    transition: height 0.2s ease-out;
+/* Navbar expanded state */
+#navbar.open {
+    height: 6.25rem; /* Expanded height */
+    overflow: visible; /* Show all da content when expanded */
 }
 
-#sidebar > ul > li > a {
-    color: rgba(245, 245, 245, 0.909);
-    text-decoration: none;
+/* NAVIGATION LINKS */
+/* Top-level navbar links */
+#navbar > ul > li > a {
     font-size: 1.5625rem;
     margin-right: 1.875rem;
 }
 
-#sidebar > ul > li > a:hover {
-    color: rgba(245, 245, 220, 0.504);
-}
-
-/* Nav bar buttons */
+/* Navigation list styling */
 ul {
-    margin-left: 48%;
-    list-style: none;
+    margin-left: 48%; /* Align to thing above */
+    list-style: none; /* Remove bullet points */
 }
 
+/* List items */
 ul li {
-    display: inline-block;
-    position: relative;
+    display: inline-block; /* Display as inline-block elements */
+    position: relative; /* for dropdown positioning */
 }
 
+/* Link styling */
 ul li a {
     display: block;
-    padding: 1.25rem 1.5625rem; 
+    padding: 1.25rem 1.5625rem; /* Vertical 20px, horizontal 25px padding */
     color: rgba(245, 245, 245, 0.909);
-    text-decoration: none;
-    text-align: center;
+    text-decoration: none; /* Remove underline from links */
+    text-align: center; /* Center text horizontally */
     font-size: 1.25rem;
 }
 
+/* Link hover effect */
+ul li a:hover {color: rgba(245, 245, 220, 0.504);}
+
+
+/* DROPDOWN MENU  */
+/* Dropdown list items */
 ul > li > .dropdown > li {
-    display: block;
+    display: block; /* Display as block element */
     padding-right: 2.5rem;
 }
 
+/* Dropdown container */
 ul li ul.dropdown {
-    width: 100%;
+    width: 120%; /* Fuller looking */
     background: #9b2743;
-    position: absolute;
+    position: absolute; /* Positioned absolute to parent li */
     z-index: 800;
-    display: none;
-    box-shadow: 0.0625rem 0.0625rem 0.0625rem 0.0625rem rgb(169,169,169);
+    display: none; /* Initially hidden */
+    box-shadow: 0.0625rem 0.0625rem 0.0625rem 0.0625rem rgb(169,169,169); /* Gray shadow */
     margin-left: 1.875rem;
     margin-top: -0.3125rem;
 }
 
-ul li a:hover {
-    color: rgba(245, 245, 220, 0.504);
-}
-
+/* Show dropdown on hover */
 ul li:hover ul.dropdown {
-    display: block;
+    display: block; /* Display dropdown menu */
 }
 
-/* Nav bar toggle button */
+/* MENU TOGGLE BUTTON */
 .openbtn {
     font-size: 1.0625rem;
-    cursor: pointer;
+    cursor: pointer; /* Show pointer cursor */
     background-color: #241e20;
     color: white;
     padding: 0.625rem 0.9375rem;
-    border: none;
-    position: fixed;
-    right: 0;
-    top: 0;
+    border: none; /* Remove default button border */
+    position: fixed; /* Fixed position */
+    right: 0; /* Aligned to right edge */
+    top: 0; /* Aligned to top edge */
     z-index: 800;
-    transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out; /* Smooth transition for */
     font-family: "Inter", sans-serif;
 }
 
-.openbtn:hover {
-    font-size: 1.375rem;
-    transition: all 0.2s ease-out;
-}
+/* Button hover effect */
+.openbtn:hover {font-size: 1.375rem;}
 
 
-/* RESPONSIVE SIDEBAR BUTTON */
-@media (max-width: 30rem) {
-    .openbtn {
-        font-size: 0.875rem;
-        padding: 0.625rem 0.875rem;
-    }
+/* RESPONSIVE STYLING */
 
-    .openbtn:hover {
-        font-size: 1rem;
-    }
-}
-
-
-/* MOBILE RESPONSIVE */
+/* Mobile styles (most of em) */
 @media (max-width: 48rem) {
-    #sidebar {
-        padding-left: 0;
-        width: 100%;
+    /* Navbar adjustments */
+    #navbar {
+        padding-left: 0; /* Remove left padding */
+        width: 100%; /* Full width */
     }
 
-    #sidebar.open {
-        height: auto;
-        max-height: 100vh;
-        overflow-y: auto;
+    #navbar.open {
+        height: auto; /* Automatic height based on content */
+        max-height: 100vh; /* Maximum height is viewport height */
+        overflow-y: auto; /* Vertical scrollbar if needed */
     }
 
+    /* Navigation list layout */
     ul {
-        margin-left: 0;
-        padding: 1rem 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
+        margin-left: 0; /* Remove left margin */
+        padding: 1rem 0; /* Vertical padding only */
+        display: flex; /* Use flexbox layout */
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        width: 100%; /* Full width */
     }
 
+    /* List items */
     ul li {
-        display: block;
-        width: 90%;
-        border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.1);
+        display: block; /* Display as block element */
+        width: 90%; /* 90% width of container */
+        border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.1); /* Bottom border separator */
     }
 
+    /* Link adjustments */
     ul li a {
         padding: 1rem;
         font-size: 1.125rem;
-        width: 100%;
-        text-align: left;
+        width: 100%; /* Full width */
+        text-align: left; /* Left-align text */
     }
 
-    #sidebar > ul > li > a {
+    /* Top-level navbar links */
+    #navbar > ul > li > a {
         font-size: 1.125rem;
-        margin-right: 0;
+        margin-right: 0; /* Remove right margin */
     }
 
+    /* Dropdown menu adjustments */
     ul li ul.dropdown {
-        position: static;
-        margin-left: 0;
-        margin-top: 0;
-        width: 100%;
+        position: static; /* Remove absolute positioning */
+        margin: 0; /* Remove margins */
+        width: 100%; /* Full width */
         background: rgba(139, 21, 56, 0.8);
-        box-shadow: none;
+        box-shadow: none; /* Remove shadow */
     }
 
+    /* Dropdown list items */
     ul > li > .dropdown > li {
-        padding-right: 0;
-        border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.05);
+        padding-right: 0; /* Remove right padding */
+        border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.05); /* Subtle bottom border */
     }
 
+    /* Dropdown links indention */
     ul li ul.dropdown li a {
-        padding-left: 2rem;
+        padding-left: 2rem; /* Indent dropdown items (32px) */
         font-size: 1rem;
     }
 
-    /* Disable hover dropdown on mobile - will need JS click handler */
+    /* Disable hover dropdown on mobile */
     ul li:hover ul.dropdown {
-        display: none;
-    }
-}
-
-/* SMALL MOBILE */
-@media (max-width: 30rem) {
-    ul li a {
-        font-size: 1rem;
-        padding: 0.875rem;
-    }
-
-    .openbtn {
-        font-size: 0.9375rem;
-        padding: 0.5rem 0.75rem;
-    }
-
-    .openbtn:hover {
-        font-size: 1.125rem;
+        display: none; /* Don't show dropdown on hover */
     }
 }
