@@ -11,433 +11,423 @@
     <link rel="stylesheet" href="style.css">
     <title>Henderson High Sports</title>
     <style>
-
+        /* PAGE SPECIFIC OVERRIDES */
         #intro {
-            background-image: linear-gradient(rgba(45, 52, 34, 0.4), rgba(199, 205, 218, 0.4)), url('hhslogolengthened.jpg');
+            background-image: linear-gradient(rgba(45, 52, 34, 0.4), rgba(199, 205, 218, 0.4)), url('photos/hhslogolengthened.jpg');
         }
 
-        /* NEWS SECTION */
-        .photo_container {position: relative;}
-        
-        .photo_desc {
-            position: absolute;
-            inset: 0 0 0 3.75rem;
-            background: rgba(0,0,0,0.6);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            font-size: 2rem;
-            text-align: center;
-            pointer-events: none;
-            border-radius: 0.375rem;
-            width: 25rem;
-            height: 17.5rem;
-            transform: translateY(2.5rem);
-            transition: opacity 0.6s, transform 0.6s cubic-bezier(0.4,0,0.2,1);
-        }
+        /* Navbar dropdown full width for home page */
+        ul li ul.dropdown {width: 100%;}
 
-        .photo_container:hover .photo_desc {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0);
+        /*  [NEWS SECTION] */
+        .news {
+            background-color: rgb(242, 239, 239);
+            width: 100%; /* Full width */
+            max-width: 100vw; /* Maximum viewport width */
+            position: relative; /* Positioned relative for children elems */
+            padding: 7.5rem 0 2.5rem 0;
+            top: -0.9375rem; /* Move up 15px to overlap with intro */
         }
 
         .news > h1 {
-            font-size: clamp(2.5rem, 5vw, 4.375rem);
+            font-size: clamp(2.5rem, 5vw, 4.375rem); /* Responsive: 40px to 70px */
             margin: 3.75rem 0 3.125rem clamp(2rem, 6.5vw, 8.75rem);
             color: #241e20;
         }
 
-        .news {
-            background-color: rgb(242, 239, 239);
-            width: 100%;
-            max-width: 100vw;
-            position: relative;
-            padding: 7.5rem 0 2.5rem 0;
-            top: -0.9375rem;
-        }
-
+        /* Main news layout */
         .images {
-            display: flex;
-            position: relative;
-            justify-content: flex-end;
+            display: flex; /* Use flexbox layout */
+            position: relative; /* Positioned relative for scrollbar */
+            justify-content: flex-end; /* Align items to right */
             margin: 5rem 5rem 9.375rem 0;
-            gap: 1rem;
+            gap: 1rem; /* 16px gap between items */
         }
 
         .main_img > img {
-            width: 100%;
-            max-width: 46.875rem;
-            height: auto;
-            aspect-ratio: 3/2;
-            border-radius: 0.375rem;
+            width: 100%; /* Full width of container */
+            max-width: 46.875rem; /* Maximum width 750px */
+            height: auto; /* Automatic height */
+            aspect-ratio: 3/2; /* Maintain consistent 3:2 image proportions */
+            border-radius: 0.375rem; /* Rounded corners */
             display: block;
-            object-fit: cover;
+            object-fit: cover; /*fill container */
         }
 
-        .scrollbar {
-            width: 0.0625rem;
-            height: 45rem;
-            background: #ccc;
-            display: block;
-            margin: 0 0 0 0.5rem;
-        }
-
-        .thumb {
-            width: 0.0625rem;
-            position: absolute;
-            height: 0;
-            background: #000;
-        }
-
-        .slides {
-            margin: 0 1rem;
-            display: grid;
-            grid-auto-flow: row;
-            gap: 1rem;
-            padding: 0 0.25rem;
-            height: 45rem;
-            overflow-y: auto;
-            overscroll-behavior-y: contain;
-            scroll-snap-type: y mandatory;
-            scrollbar-width: none;
-        }
-
-        .slides img {
-            width: 25rem;
-            height: 17.5rem;
-            scroll-snap-align: start;
-            position: relative;
-            border-radius: 0.375rem;
-            margin-left: 3.75rem;
-            object-fit: cover;
-        }
-
-        .main_img > h1,
-        .main_img > h2,
-        .main_img > h3 {
-            font-family: "Inter", sans-serif;
+        .main_img > h1, .main_img > h2,.main_img > h3 {
             color: #241e20;
-            margin-top: 1.25rem;
+            margin-top: 1.25rem; /* Top margin 20px */
         }
 
-        .main_img > h1 {
-            font-size: 1.375rem;
-        }
-        
+        .main_img > h1 {font-size: 1.375rem;}
+
         .main_img > h2 {
             font-size: 0.875rem;
             color: #897f83;
         }
 
-        /* SLIDERS */
-        .sliders {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 2.5rem 0;
-            flex-wrap: wrap;
-            gap: 1.25rem;
+        /* PHOTO GALLERY WITH SCROLLBAR */
+        .slides {
+            margin: 0 1rem; /* Left and right proport margin 16px */
+            display: grid; /* Use CSS Grid */
+            grid-auto-flow: row; /* Stack items vertically */
+            gap: 1rem; /* 16px gap between items */
+            padding: 0 0.25rem; /* right and left padding 4px */
+            height: 45rem; /* Fixed height */
+            overflow-y: auto; /* Enable vertical scrolling */
+            overscroll-behavior-y: contain; /* Prevent scroll chaining to parent */
+            scroll-snap-type: y mandatory; /* Snap to each image when scrolling */
+            scrollbar-width: none; /* Hide default scrollbar */
         }
 
+        .slides img {
+            width: 25rem;
+            height: 17.5rem;
+            scroll-snap-align: start; /* Snap alignment point at top */
+            position: relative; /* Positioned relative */
+            border-radius: 0.375rem; /* rounded corners */
+            margin-left: 3.75rem;
+            object-fit: cover; /* Crop to fill container */
+        }
+
+        /* Custom scrollbar */
+        .scrollbar {
+            width: 0.0625rem;
+            height: 45rem; /*length of scrollbar*/
+            background: #ccc;
+            display: block;
+            margin: 0 0 0 0.5rem; /* Space from images */
+        }
+
+        /* Scrollbar thumb indicator */
+        .thumb {
+            width: 0.0625rem;
+            position: absolute; /* Positioned absolute to div */
+            height: 0; /* invisible at first */
+            background: #000;
+        }
+
+        /* Photo hover description overlay */
+        .photo_container {position: relative;} /* Positioned relative for absolute overlay */
+
+        /* Photo description */
+        .photo_desc {
+            position: absolute; /* Positioned absolutely over image */
+            inset: 0 0 0 3.75rem; /* Left margin is 60px */
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            display: flex; /* Use flexbox */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            opacity: 0; /* Hidden by default */
+            font-size: 2rem;
+            text-align: center; /* Center text */
+            pointer-events: none; /* Don't block clicks when hidden */
+            border-radius: 0.375rem; /* Rounded corners */
+            width: 25rem;
+            height: 17.5rem;
+            transform: translateY(2.5rem); /* Start 40px below position so it can go up later */
+            transition: opacity 0.6s, transform 0.6s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        /* Show description on hover with slide-up animation */
+        .photo_container:hover .photo_desc {
+            opacity: 1; /* Fully visible */
+            pointer-events: auto; /* Enable clicks */
+            transform: translateY(0); /* Move to original position */
+        }
+
+        /* HIGHLIGHTS SLIDER */
+        .highlights > h1 {
+            text-align: center; /* Center text */
+            font-size: clamp(2.5rem, 5vw, 4.375rem); /* Responsive: 40px to 70px */
+            color: #241e20;
+            margin-bottom: 7.5rem;
+        }
+
+        .sliders {
+            display: flex; /* Use flexbox */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            margin: 2.5rem 0; /* top and bottom margin 40px */
+            flex-wrap: wrap; /* Wrap items to next line if needed */
+            gap: 1.25rem; /* 20px gap between items */
+        }
+
+        /* Arrow navigation buttons */
         .arrow {
             background: #e5dbc3;
-            border: none;
-            border-radius: 50%;
+            border: none; /* Remove default border */
+            border-radius: 50%; /* Make circular */
             width: 3.5rem;
             height: 3.5rem;
-            min-width: 2.75rem;
-            min-height: 2.75rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            min-width: 2.75rem; /* Minimum width 44px */
+            min-height: 2.75rem; /* Minimum height 44px */
+            display: flex; /* Use flexbox */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
             font-size: 1.75rem;
-            cursor: pointer;
+            cursor: pointer; /* Show pointer cursor */
             transition: background 0.2s;
         }
 
         .arrow:disabled {
-            opacity: 0.5;
-            cursor: default;
+            opacity: 0.5; /* Semi-transparent when disabled */
+            cursor: default; /* Default cursor when disabled */
         }
 
+        /* Slider viewport */
         .slider_view {
-            overflow: hidden;
+            overflow: hidden; /* Hide cards outside viewport */
             width: 74rem;
-            max-width: 90vw;
+            max-width: 90vw; /* Maximum 90% of viewport width */
         }
 
+        /* Slider track for the cards */
         .slider_track {
-            display: flex;
-            gap: 1.25rem;
+            display: flex; /* Use flexbox for horizontal layout */
+            gap: 1.25rem; /* 20px gap between cards */
             transition: transform 0.4s cubic-bezier(.5,.03,.62,.97);
         }
 
+        /* Individual slider cards */
         .slider_card {
-            flex: 0 0 23.625rem;
+            flex: 0 0 23.625rem; /* Fixed width 378px, cant grow or shrink */
             background: white;
-            border-radius: 0.5rem;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.04);
-            font-family: "Inter", sans-serif;
+            border-radius: 0.5rem; /* Rounded corners */
+            display: flex; /* Use flexbox */
+            flex-direction: column; /* Stack carfds vertically */
+            box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.04); /* Subtle shadow */
             transition: transform 0.5s;
         }
 
-        .slider_card:hover {
-            transform: scale(0.9);
-        }
+        /*On hover of image card*/
+        .slider_card:hover {transform: scale(0.9);} /*Shrink on hvoer*/
 
         .slider_card img {
-            width: 100%;
+            width: 100%; /* Full width */
             height: 16.25rem;
-            object-fit: cover;
-            border-radius: 0.5rem 0.5rem 0 0;
+            object-fit: cover; /* Crop to fill container */
+            border-radius: 0.5rem 0.5rem 0 0; /* Rounded top corners only */
         }
 
         .slider_card h3 {
             font-size: 1.125rem;
             color: #9b2743;
-            padding: 1rem 0 0 1.25rem;
+            padding: 1rem 0 0 1.25rem; /* Top 16px, left 20px */
         }
 
         .slider_card h1 {
             font-size: 1.375rem;
-            padding: 0.5rem 1.25rem 1.25rem;
+            padding: 0.5rem 1.25rem 1.25rem; /* Top 8px, horizontal 20px, bottom 20px */
         }
 
-        .highlights > h1 {
-            text-align: center;
-            font-size: clamp(2.5rem, 5vw, 4.375rem);
-            color: #241e20;
-            margin-bottom: 7.5rem;
-        }
-
-        /* DRAWS */
+        
+        /*  [WEEKLY DRAWS SECTION] */
         #draws {
-            padding: 0 0 5rem 3.75rem;
-            top: -6.25rem;
-            width: 100%;
-            max-width: 100vw;
-            background-image: url('team.png');
-            position: relative;
-            overflow-x: auto;
-            overflow-y: auto;
-            word-wrap: break-word;
-            background-size: cover;
+            padding: 0 0 5rem 3.75rem; /* Bottom 80px, left 60px */
+            top: -6.25rem; /* Move up to overlap */
+            width: 100%; /* Full width */
+            max-width: 100vw; /* Maximum viewport width */
+            background-image: linear-gradient(rgba(106, 108, 101, 0.4), #9b27429f), url('photos/team.png');
+            position: relative; /* Positioned relative */
+            overflow-x: auto; /* Enable horizontal scrolling if needed */
+            overflow-y: auto; /* Enable vertical scrolling if needed */
+            word-wrap: break-word; /* Break long words to prevent overflow */
+            background-size: cover; /* Scale background to cover entire area */
             display: block;
         }
 
+        #draws > h1 {
+            font-size: clamp(2.5rem, 5vw, 4.375rem); /* Responsive: 40px to 70px */
+            color: rgb(238, 235, 235);
+            text-align: center; /* Center text */
+            margin: 5% 7% 3% 0;
+        }
+
         @media (min-width: 48rem) {
-            #draws {
-                min-height: 6.25rem;
-            }
+            /* Minimum height 100px on tablet+ */
+            #draws {min-height: 6.25rem;}
         }
 
+        /* Fixed background parallax effect */
         @media (min-width: 64.0625rem) {
-            #draws {
-                background-attachment: fixed;
-            }
+            #draws {background-attachment: fixed;}  /* Background stays fixed while scrolling */
         }
 
-        #drawOne, #drawTwo, #drawThree, #drawFour {
+        /* Individual draw cards - combined styles */
+        #drawOne,#drawTwo, #drawThree, #drawFour {
             background-color: rgb(211, 204, 204);
-            display: inline-block;
+            display: inline-block; /* Inline with each other */
             text-align: center;
-            box-shadow: 0.1875rem 0.1875rem 0.1875rem 0.1875rem #242547;
+            box-shadow: 0.1875rem 0.1875rem 0.1875rem 0.1875rem #242547; /* Shadow on all sides */
             transition: 0.5s all ease-in-out;
             border: 0.0625rem solid #9b2743;
-            margin: 1.875rem 1.25rem 0 0;
-            padding: 0 3.5625rem 2.1875rem;
+            margin: 1.875rem 1.25rem 0 0; /* Top 30px, right 20px */
+            padding: 0 3.5625rem 2.1875rem; /* Horizontal 57px, bottom 35px */
         }
 
+        /* Draw card headers */
         #drawOne > #top, #drawTwo > #top,
         #drawThree > #top, #drawFour > #top {
             background-color: #9b2743;
-            margin-top: -0.625rem;
+            margin-top: -0.625rem; /* Pull up 10px to overlap parent */
             color: white;
-            padding: 0.625rem;
+            padding: 0.625rem; /* 10px padding all sides */
         }
 
-        #drawOne:hover, #drawTwo:hover,
+        /* Scale up draw cards on hover */
+        #drawOne:hover,#drawTwo:hover,
         #drawThree:hover, #drawFour:hover {
-            transform: scale(1.1);
-        }
-        
-        #draws > h1 {
-            margin-bottom: 1%;
-            font-size: clamp(2.5rem, 5vw, 4.375rem);
-            color: #9b2743;
+            transform: scale(1.1); /*Increase size on hover*/
         }
 
-        /* ALL THREE SPORTS AT BOTTOM OF PAGE */
+        /* SPORTS PANELS SECTION */
         .sports {
-            display: flex;
-            width: 100%;
-            max-width: 100vw;
+            display: flex; /* Use flexbox for horizontal layout */
+            width: 100%; /* Full width */
+            max-width: 100vw; /* Maximum viewport width */
             height: 50rem;
-            overflow: hidden;
-            position: relative;
+            overflow: hidden; /* Hide content that overflows */
+            position: relative; /* Positioned relative */
             margin-top: 6.25rem;
         }
 
         .panel {
-            flex: 1;
-            position: relative;
-            background-size: cover;
-            background-position: center;
-            transition: flex 0.5s ease;
-            cursor: pointer;
-            overflow: hidden;
+            flex: 1; /* Equal width on no hover (1/3 each) */
+            position: relative; /* Positioned relative for overlay */
+            background-size: cover; /* Scale background to cover entire area */
+            background-position: center; /* Center background image */
+            transition: flex 0.5s ease; /* Smooth width transition */
+            cursor: pointer; /* Show pointer cursor */
+            overflow: hidden; /* Hide content that overflows */
         }
 
+        /* Dark overlay on panels */
         .panel::before {
-            content: '';
-            position: absolute;
-            inset: 0 0 0 0;
+            content: ''; /* Empty content for pseudo */
+            position: absolute; /* Positioned absolutely */
+            inset: 0; /* Fill entire panel */
             background: rgba(0, 0, 0, 0.4);
             transition: background 0.5s ease;
         }
 
+        /* Sport descriptions centered on panels */
         .sport_desc {
-            position: absolute;
+            position: absolute; /* Positioned absolutely */
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); /* Center by moving back 50% of own width/height */
             color: white;
-            font-size: clamp(2rem, 4vw, 4rem);
+            font-size: clamp(2rem, 4vw, 4rem); /* Responsive: 32px to 64px */
             font-weight: bold;
             text-align: center;
-            z-index: 2;
-            text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.8);
-            pointer-events: none;
+            z-index: 2; /* Above overlay */
+            text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.8); /* Text shadow for readability */
+            pointer-events: none; /* Allow clicks to pass through to panel */
         }
 
+        /* Expand hovered panel to 3x width */
         .panel:hover {flex: 3;}
 
-        .netball {background-image: url('netball.png');}
-        .football {background-image: url('football.png');}
-        .basketball {background-image: url('basketball.png');}
+        /* Individual sport panel backgrounds */
+        .netball {background-image: url('photos/netball.png');}
 
-        /* RESPONSIVENES OF WEBSITE */
+        .football {background-image: url('photos/football.png');}
+
+        .basketball {background-image: url('photos/basketball.png');}
+
+
+        /* RESPONSIVE MEDIA QUERIES */
+
         @media (max-width: 64rem) {
             .images {
-                flex-direction: column;
-                align-items: center;
-                margin: 3rem 2rem 5rem;
+                flex-direction: column; /* Stack main image and slides vertically */
+                align-items: center; /* Center items horizontally */
+                margin: 3rem 2rem 5rem; /*Change overall margins*/
             }
 
             .slides {
-                margin: 2rem 0 0;
+                margin: 2rem 0 0; /* Increase top marg */
                 height: auto;
-                max-height: 30rem;
+                max-height: 30rem; /* Maximum height */
             }
 
             .slides img {
-                margin-left: 0;
-                width: 100%;
+                margin-left: 0; /* Remove left margin */
+                width: 100%; /* Full width */
                 max-width: 25rem;
             }
 
             .photo_desc {
-                left: 0;
-                width: 100%;
-                max-width: 25rem;
+                left: 0; /* Align to left */
+                width: 100%; /* Full width */
+                max-width: 25rem; /* Maximum width 400px */
             }
 
-            .slider_view {
-                width: 50rem;
-            }
+            .slider_view {width: 50rem;} /* Width 800px */
         }
 
+        /* Mobile */
         @media (max-width: 48rem) {
-            .news {
-                padding: 3rem 1rem 2rem;
+            .news {padding: 3rem 1rem 2rem;} /* Adjust margins */
+
+            .news > h1 {margin: 2rem 0 2rem 1rem;}  /* Adjust margins */
+            
+            .scrollbar {display: none;}  /* Hide custom scrollbar on mobile */
+
+            #draws {padding: 0 1rem 3rem 1rem;} /* Bottom 48px, horizontal 16px */
+
+            /* Stack draw cards vertically */
+            #drawOne, #drawTwo,
+            #drawThree, #drawFour {
+                display: block; /* Display as block element */
+                margin: 1rem auto; /* Vertical 16px, horizontal auto (centered) */
+                max-width: 20rem; /* Maximum width */
             }
 
-            .news > h1 {
-                margin: 2rem 0 2rem 1rem;
-            }
-             
-            .scrollbar {
-                display: none;
-            }
+            .slider_view {width: 25rem;} /* Adjust widh */
 
-            #draws {
-                padding: 0 1rem 3rem 1rem;
-            }
-
-            #drawOne, #drawTwo, #drawThree, #drawFour {
-                display: block;
-                margin: 1rem auto;
-                max-width: 20rem;
-            }
-
-            .slider_view {
-                width: 25rem;
-            }
-
-            .slider_card {
-                flex: 0 0 23rem;
-            }
+            .slider_card {flex: 0 0 23rem;} /* Fixed width 368px */
 
             .arrow {
-                width: 2.5rem;
-                height: 2.5rem;
+                width: 2.5rem; /* Width 40px */
+                height: 2.5rem; /* Height 40px */
                 font-size: 1.25rem;
             }
 
+            /* Stack sport panels vertically on mobile */
             .sports {
-                height: auto;
-                flex-direction: column;
+                height: auto; /* Automatic height */
+                flex-direction: column; /* Stack items vertically */
             }
 
-            .panel {
-                min-height: 20rem;
-            }
-        }
-
-        @media (max-width: 30rem) {
-            .photo_desc {
-                font-size: 1.25rem;
-            }
-
-            .slider_card {
-                flex: 0 0 18rem;
-            }
-
-            .slider_view {
-                width: 18rem;
-            }
+            .panel {min-height: 20rem;}  /* Adjust height */
         }
 
         /* Disable hover effects on touch devices */
         @media (hover: none) and (pointer: coarse) {
-            .slider_card:hover {
-                transform: none;
-            }
+            .slider_card:hover {transform: none;}  /* Don't scale on touch devices */
         }
-        
+
     </style>
 </head>
 <body>
     <a href="https://www.hhs.school.nz/" target="_blank">
-        <img src="hendersonhigh.png" alt="Henderson High School Logo" class="logo">
+        <img src="photos/hendersonhigh.png" alt="Henderson High School Logo" class="logo">
     </a>
-    <div id="sidebar">
+    <div id="navbar">
         <ul>
             <li><a href="index.html" id="current">Home</a></li>
             <li>
                 <a href="#" id="sports">Sports ▾</a>
                 <ul class="dropdown">
                     <li><a href="basketball.html" target="_blank">Basketball</a></li>
-                    <li><a href="football.html" target="_blank">Football</a></li>
-                    <li><a href="hockey.html" target="_blank">Hockey</a></li>
+                    <li><a href="basketball.html" target="_blank">Football</a></li>
+                    <li><a href="netball.html" target="_blank">Netball</a></li>
                 </ul>
             </li>
-            <li><a href="#draws">About Us</a></li>
+            <li><a href="reg.php" target="_blank">Sign Ups</a></li>
         </ul>
     </div>
     <div id="top">
@@ -445,7 +435,7 @@
     </div>
     <div id="intro">
         <h1>Henderson High School <br> Sports </h1>
-        <button>About Us</button> 
+        <button><a href="https://www.hhs.school.nz/" target="_blank">About Us</a></button> 
     </div>
     <div class="news">
         <h1>HEADLINES:</h1>
@@ -477,6 +467,10 @@
                     <img src="https://picsum.photos/id/257/400/280" alt="Sports 5">
                     <div class="photo_desc">Description 5</div>
                 </div>
+                <div class="photo_container">
+                    <img src="https://picsum.photos/id/1067/400/280" alt="Sports 6">
+                    <div class="photo_desc">Description 6</div>
+                </div>
             </div>
             <div class="scrollbar">
                 <div class="thumb"></div>
@@ -484,7 +478,7 @@
         </div>
     </div>
     <div id="draws">
-        <h1>Sports Draws: </h1>
+        <h1>Weekly Draws: </h1>
         <div id="drawOne">
             <div id="top">Basketball</div>
             <h3>Draw One</h3>
@@ -515,32 +509,32 @@
                     <div class="slider_card">
                         <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=700&q=80" alt="Highlight 1">
                         <h3>Men's Basketball</h3>
-                        <h1>Hansson Wins Ben Hogan Collegiate Invitational</h1>
+                        <h1>Lorem ipsum dolor sit amet consectetur adipisicing.</h1>
                     </div>
                     <div class="slider_card">
                         <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=700&q=80" alt="Highlight 2">
                         <h3>Men's Basketball</h3>
-                        <h1>Hansson Wins Ben Hogan Collegiate Invitational</h1>
+                        <h1>Lorem ipsum dolor sit amet consectetur adipisicing.</h1>
                     </div>
                     <div class="slider_card">
                         <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=700&q=80" alt="Highlight 3">
                         <h3>Men's Basketball</h3>
-                        <h1>Hansson Wins Ben Hogan Collegiate Invitational</h1>
+                        <h1>Lorem ipsum dolor sit amet consectetur adipisicing.</h1>
                     </div>
                     <div class="slider_card">
                         <img src="https://images.unsplash.com/photo-1519985176271-adb1088fa94c?auto=format&fit=crop&w=700&q=80" alt="Highlight 4">
                         <h3>Men's Basketball</h3>
-                        <h1>Hansson Wins Ben Hogan Collegiate Invitational</h1>
+                        <h1>Lorem ipsum dolor sit amet consectetur adipisicing.</h1>
                     </div>
                     <div class="slider_card">
                         <img src="https://images.unsplash.com/photo-1519985176271-adb1088fa94c?auto=format&fit=crop&w=700&q=80" alt="Highlight 5">
                         <h3>Men's Basketball</h3>
-                        <h1>Hansson Wins Ben Hogan Collegiate Invitational</h1>
+                        <h1>Lorem ipsum dolor sit amet consectetur adipisicing.</h1>
                     </div>
                     <div class="slider_card">
                         <img src="https://images.unsplash.com/photo-1519985176271-adb1088fa94c?auto=format&fit=crop&w=700&q=80" alt="Highlight 6">
                         <h3>Men's Basketball</h3>
-                        <h1>Hansson Wins Ben Hogan Collegiate Invitational</h1>
+                        <h1>Lorem ipsum dolor sit amet consectetur adipisicing.</h1>
                     </div>
                 </div>
             </div>
@@ -548,15 +542,15 @@
         </div>
     </div>
     <div class="sports">
-        <div class="panel netball">
+        <a href="basketball.html" target = '_blank' class="panel netball">
             <div class="sport_desc">Netball</div>
-        </div>
-        <div class="panel football">
+        </a>
+        <a href="basketball.html" target = '_blank' class="panel football">
             <div class="sport_desc">Football</div>
-        </div>
-        <div class="panel basketball">
+        </a>
+        <a href="basketball.html" target = '_blank' class="panel basketball">
             <div class="sport_desc">Basketball</div>
-        </div>
+        </a>
     </div>
     <script>
         const slideGallery = document.querySelector('.slides');
