@@ -1,6 +1,14 @@
 function openNav() {
-    var sidebar = document.getElementById("sidebar");
-    sidebar.classList.toggle("open");
+    var navbar = document.getElementById("navbar");
+    const container = document.querySelector(".container");
+
+    if (navbar.classList.contains("open")) {
+        navbar.classList.remove("open");
+        container.classList.remove("shifted");
+    } else {
+        navbar.classList.add("open");
+        container.classList.add("shifted");
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -28,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         entries.forEach(function(entry) {
         if (entry.isIntersecting) {
             logo.classList.add('logo-hidden');
-            logo.classLis.remove('logo-shown');
+                logo.classList.remove('logo-shown');
         } else {
             logo.classList.add('logo-shown');
             logo.classList.remove('logo-hidden');
@@ -37,3 +45,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { threshold: 0.1 });
     observer.observe(intro);
     });
+
