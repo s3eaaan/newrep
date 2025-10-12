@@ -1,0 +1,311 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(350deg, #903e51 0%, #971332 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 50px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: 500;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #9b2743 0%, #971332 100%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+        
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: 500;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #9b2743;
+}
+
+.bttm_txt {
+    text-align: center;
+    margin-top: 20px;
+    color: #555;
+}
+.bttm_txt a {
+    color: #9b2743;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+
+/*LOGO STYLING*/
+.logo {
+    display: inline;
+    color: white;
+    padding: 6px 26px 0;
+    z-index: 999;
+    height: 150px;
+    size: 40px;
+    width: 200px;
+    position: fixed;
+    top: 4px;
+    left: 0;
+    opacity: 1;
+}
+
+/*NAV BAR STYLING*/ 
+#navbar {
+    background-color: #9b2743;
+    border: 0.09375rem solid black;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding-left: 21%;
+    z-index: 800;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.2s ease-out;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#navbar.open {
+    height: 6.25rem;
+    overflow: visible;
+    transition: height 0.2s ease-out;
+}
+
+#navbar > ul > li > a {
+    color: rgba(245, 245, 245, 0.909);
+    text-decoration: none;
+    font-size: 1.5625rem;
+    margin-right: 1.875rem;
+}
+
+#navbar > ul > li > a:hover {
+    color: rgba(245, 245, 220, 0.504);
+}
+
+/* Nav bar buttons */
+ul {
+    margin-left: 48%;
+    list-style: none;
+}
+
+ul li {
+    display: inline-block;
+    position: relative;
+}
+
+ul li a {
+    display: block;
+    padding: 1.25rem 1.5625rem; 
+    color: rgba(245, 245, 245, 0.909);
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.25rem;
+    margin-top: 10%;
+}
+
+ul > li > .dropdown > li {
+    display: block;
+    padding-right: 2.5rem;
+}
+
+ul li ul.dropdown {
+    width: 100%;
+    background: #9b2743;
+    position: absolute;
+    z-index: 800;
+    display: none;
+    box-shadow: 0.0625rem 0.0625rem 0.0625rem 0.0625rem rgb(169,169,169);
+    margin-left: 1.875rem;
+    margin-top: -0.3125rem;
+}
+
+ul li a:hover {
+    color: rgba(245, 245, 220, 0.504);
+}
+
+ul li:hover ul.dropdown {
+    display: block;
+}
+
+/* Nav bar toggle button */
+.openbtn {
+    font-size: 1.0625rem;
+    cursor: pointer;
+    background-color: #241e20;
+    color: white;
+    padding: 0.625rem 0.9375rem;
+    border: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 800;
+    transition: all 0.2s ease-out;
+    font-family: "Inter", sans-serif;
+}
+
+.openbtn:hover {
+    font-size: 1.375rem;
+    transition: all 0.2s ease-out;
+}
+
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 400px;
+    transition: margin-top 0.3s ease;
+}
+
+.container.shifted {
+    margin-top: 5%; /* Adds 50px to the existing margin */
+}
+
+
+/*RESPONSIVE NAV BAR*/
+
+@media (max-width: 48rem) {
+    /* Navbar adjustments */
+    #navbar {
+        padding-left: 0; /* Remove left padding */
+        width: 100%; /* Full width */
+    }
+
+    #navbar.open {
+        height: auto; /* Automatic height based on content */
+        max-height: 100vh; /* Maximum height is viewport height */
+        overflow-y: auto; /* Vertical scrollbar if needed */
+    }
+
+    /* Navigation list layout */
+    ul {
+        margin-left: 0; /* Remove left margin */
+        padding: 1rem 0; /* Vertical padding only */
+        display: flex; /* Use flexbox layout */
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        width: 100%; /* Full width */
+    }
+
+    /* List items */
+    ul li {
+        display: block; /* Display as block element */
+        width: 90%; /* 90% width of container */
+        border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.1); /* Bottom border separator */
+    }
+
+    /* Link adjustments */
+    ul li a {
+        padding: 1rem;
+        font-size: 1.125rem;
+        width: 100%; /* Full width */
+        text-align: left; /* Left-align text */
+    }
+
+    /* Top-level navbar links */
+    #navbar > ul > li > a {
+        font-size: 1.125rem;
+        margin-right: 0; /* Remove right margin */
+    }
+
+    /* Dropdown menu adjustments */
+    ul li ul.dropdown {
+        position: static; /* Remove absolute positioning */
+        margin: 0; /* Remove margins */
+        width: 100%; /* Full width */
+        background: rgba(139, 21, 56, 0.8);
+        box-shadow: none; /* Remove shadow */
+    }
+
+    /* Dropdown list items */
+    ul > li > .dropdown > li {
+        padding-right: 0; /* Remove right padding */
+        border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.05); /* Subtle bottom border */
+    }
+
+    /* Dropdown links indention */
+    ul li ul.dropdown li a {
+        padding-left: 2rem; /* Indent dropdown items (32px) */
+        font-size: 1rem;
+    }
+
+    /* Disable hover dropdown on mobile */
+    ul li:hover ul.dropdown {
+        display: none; /* Don't show dropdown on hover */
+    }
+
+    .logo {
+        height: 50px;
+        width: 100px;
+    }
+}
