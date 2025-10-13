@@ -16,7 +16,10 @@
         
         * {box-sizing: border-box;}  /* Include padding and border in element width/height */
 
-        body {background-color: #f5f5f5;}  /* Light gray background */
+        body {
+            background-color: #f5f5f5;
+            width: 100vw;
+        }
 
         /* Gradient overlay on netball team photo */
         #intro {
@@ -208,11 +211,11 @@
         /* Diff photo backgrounds */
 
         /* Photo 1 */
-        .childOne {background-image: url('https://picsum.photos/id/1067/450/700');}
+        .childOne {background-image: linear-gradient(#312d2e19, rgba(4, 4, 4, 0.4)), url('photos/nbphoto1.png');}
         /* Photo 2 */
-        .childTwo {background-image: url('https://picsum.photos/id/122/450/700');}
+        .childTwo {background-image: url('photos/nbphoto2.png');}
         /* Photo 3 */
-        .childThree {background-image: url('https://picsum.photos/id/1015/450/700');}
+        .childThree {background-image: linear-gradient(#312d2e19, rgba(4, 4, 4, 0.4)), url('photos/nbphoto3.png');}
 
         /* Zoom effect on hover */
         .photos:hover .childOne, 
@@ -424,7 +427,7 @@
                 <a href="#" id='sports'>Sports ▾</a>
                 <ul class="dropdown">
                     <li><a href="basketball.html" target="_blank">Basketball</a></li>
-                    <li><a href="basketball.html" target="_blank">Football</a></li>
+                    <li><a href="football.html" target="_blank">Football</a></li>
                     <li><a href="netball.html" target="_blank">Netball</a></li>
                 </ul>
             </li>
@@ -443,20 +446,12 @@
             <h1>LATEST NEWS:</h1>
             <div class="photos-grid">
                 <div class="photo_container">
-                    <img src="https://picsum.photos/id/1067/540/720" alt="Netball news 1">
-                    <p>Lorem ipsum dolor sit, amet consectetur <br>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <img src="photos/netball.png" alt="Netball news 1">
+                    <p><strong>Henderson High School Netball Champions </strong><br><br>Henderson High School Netball Team wins the Championship Game</p>
                 </div>
                 <div class="photo_container">
-                    <img src="https://picsum.photos/id/122/540/720" alt="Netball news 2">
-                    <p>Lorem ipsum dolor sit, amet consectetur <br>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </div>
-                <div class="photo_container">
-                    <img src="https://picsum.photos/id/1015/540/720" alt="Netball news 3">
-                    <p>Lorem ipsum dolor sit, amet consectetur <br>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </div>
-                <div class="photo_container">
-                    <img src="https://picsum.photos/id/1016/540/720" alt="Netball news 4">
-                    <p>Lorem ipsum dolor sit, amet consectetur <br>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <img src="photos/secondnetballteam.png" alt="Netball news 2">
+                    <p><strong>Henderson High School Netball Tournament Team</strong><br><br>Henderson High School's Netball Team gets ready to join the tournament.</p>
                 </div>
             </div>
         </div>
@@ -495,16 +490,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="game-item">
-                    <div class="game-date">NOV. 6 • 7:00 P.M.</div>
-                    <div class="game-details">
-                        <div class="team-logo">🏐</div>
-                        <div class="game-info">
-                            <div class="game-opponent">Men's Netball</div>
-                            <div class="game-location">at St Peter's College</div>
-                        </div>
-                    </div>
-                </div>
            </div>
         </div>   
     </div>  
@@ -515,21 +500,21 @@
                 <div class="childOne"></div>
                 <div class="photo-caption">
                     <h2>Men's Netball</h2>
-                    <h3>April 28, 2024: Henderson vs Onehunga</h3>
+                    <h3>October 10th, Waitakere Championship Game</h3>
                 </div>
             </div>
             <div class="photos">
                 <div class="childTwo"></div>
                 <div class="photo-caption">
                     <h2>Men's Netball</h2>
-                    <h3>April 28, 2024: Henderson vs Onehunga</h3>
+                    <h3>October 10th, Waitakere Championship Game</h3>
                 </div>
             </div>
             <div class="photos">
                 <div class="childThree"></div>
                 <div class="photo-caption">
                     <h2>Men's Netball</h2>
-                    <h3>April 28, 2024: Henderson vs Onehunga</h3>
+                    <h3>October 10th, Waitakere Championship Game</h3>
                 </div>
             </div>
         </div>
@@ -542,13 +527,13 @@
         </div>
         <div class="information">
             <h1>ACHIEVEMENTS</h1>
-            <h3>Tuesdays: 3:00 PM - 5:00 PM</h3>
-            <h3>Thursdays: 4:00 PM - 6:00 PM</h3>
+            <h3>2024: Waitakere Netball Champions</h3>
+            <h3>2025: Waitakere Netball Champions</h3>
         </div>
         <div class="information">
             <h1>COACHES</h1>
-            <h3>Tuesdays: 3:00 PM - 5:00 PM</h3>
-            <h3>Thursdays: 4:00 PM - 6:00 PM</h3>
+            <h3>Coach: Coach Jake Bodley</h3>
+            <h3>Assistant Coach: Coach Fonteyne Dehar Webster</h3>
         </div>
         <div class="information_main">
             <h1>Why Choose Us?</h1>

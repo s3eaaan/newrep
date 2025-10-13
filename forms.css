@@ -118,7 +118,7 @@ input:focus {
 }
 
 /*NAV BAR STYLING*/ 
-#sidebar {
+#navbar {
     background-color: #9b2743;
     border: 0.09375rem solid black;
     position: fixed;
@@ -133,20 +133,20 @@ input:focus {
     font-family: 'Times New Roman', Times, serif;
 }
 
-#sidebar.open {
+#navbar.open {
     height: 6.25rem;
     overflow: visible;
     transition: height 0.2s ease-out;
 }
 
-#sidebar > ul > li > a {
+#navbar > ul > li > a {
     color: rgba(245, 245, 245, 0.909);
     text-decoration: none;
     font-size: 1.5625rem;
     margin-right: 1.875rem;
 }
 
-#sidebar > ul > li > a:hover {
+#navbar > ul > li > a:hover {
     color: rgba(245, 245, 220, 0.504);
 }
 
@@ -229,4 +229,83 @@ ul li:hover ul.dropdown {
 
 .container.shifted {
     margin-top: 5%; /* Adds 50px to the existing margin */
+}
+
+
+/*RESPONSIVE NAV BAR*/
+
+@media (max-width: 48rem) {
+    /* Navbar adjustments */
+    #navbar {
+        padding-left: 0; /* Remove left padding */
+        width: 100%; /* Full width */
+    }
+
+    #navbar.open {
+        height: auto; /* Automatic height based on content */
+        max-height: 100vh; /* Maximum height is viewport height */
+        overflow-y: auto; /* Vertical scrollbar if needed */
+    }
+
+    /* Navigation list layout */
+    ul {
+        margin-left: 0; /* Remove left margin */
+        padding: 1rem 0; /* Vertical padding only */
+        display: flex; /* Use flexbox layout */
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        width: 100%; /* Full width */
+    }
+
+    /* List items */
+    ul li {
+        display: block; /* Display as block element */
+        width: 90%; /* 90% width of container */
+        border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.1); /* Bottom border separator */
+    }
+
+    /* Link adjustments */
+    ul li a {
+        padding: 1rem;
+        font-size: 1.125rem;
+        width: 100%; /* Full width */
+        text-align: left; /* Left-align text */
+    }
+
+    /* Top-level navbar links */
+    #navbar > ul > li > a {
+        font-size: 1.125rem;
+        margin-right: 0; /* Remove right margin */
+    }
+
+    /* Dropdown menu adjustments */
+    ul li ul.dropdown {
+        position: static; /* Remove absolute positioning */
+        margin: 0; /* Remove margins */
+        width: 100%; /* Full width */
+        background: rgba(139, 21, 56, 0.8);
+        box-shadow: none; /* Remove shadow */
+    }
+
+    /* Dropdown list items */
+    ul > li > .dropdown > li {
+        padding-right: 0; /* Remove right padding */
+        border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.05); /* Subtle bottom border */
+    }
+
+    /* Dropdown links indention */
+    ul li ul.dropdown li a {
+        padding-left: 2rem; /* Indent dropdown items (32px) */
+        font-size: 1rem;
+    }
+
+    /* Disable hover dropdown on mobile */
+    ul li:hover ul.dropdown {
+        display: none; /* Don't show dropdown on hover */
+    }
+
+    .logo {
+        height: 50px;
+        width: 100px;
+    }
 }

@@ -20,7 +20,7 @@ $messageType = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sport_name = trim($_POST['sport_name']);
     $full_name = trim($_POST['full_name']);
-    $age = intval($_POST['age']);
+    $age = trim($_POST['age']);
     $year_level = intval($_POST['year_level']);
     $email = trim($_POST['email']);
     $phone_number = trim($_POST['phone_number']);
@@ -32,11 +32,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($sport_name) || empty($full_name) || empty($age) || empty($year_level) || empty($email) || empty($phone_number)) {
         $message = 'Please fill in all required fields!';
         $messageType = 'error';
+    } elseif (preg_match('/[0-9]/', $full_name)) {
+        $message = 'Name cannot contain numbers!';
+        $messageType = 'error';
+    } elseif (!is_numeric($age)) {
+        $message = 'Age must be a number!';
+        $messageType = 'error';
+    } elseif (intval($age) < 13 || intval($age) > 100) {
+        $message = 'Please enter a valid age!';
+        $messageType = 'error';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $message = 'Invalid email format!';
         $messageType = 'error';
-    } elseif ($age < 5 || $age > 100) {
-        $message = 'Please enter a valid age!';
+    } elseif (!preg_match('/^[0-9]+$/', $phone_number)) {
+        $message = 'Enter a valid phone number!';
+        $messageType = 'error';
+    } elseif (strlen($phone_number) < 9) {
+        $message = 'Enter a valid phone number!';
         $messageType = 'error';
     } else {
         try {
@@ -44,12 +56,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
             // Insert registration
-            $stmt = $conn->prepare("INSERT INTO sports_registrations (user_id, sport_name, full_name, age, year_level, email, phone_number, prior_experience, additional_comments, created_at) VALUES (:user_id, :sport_name, :full_name, :age, :year_level, :email, :phone_number, :prior_experience, :additional_comments, NOW())");
+            $stmt = $conn->prepare("INSERT INTO sports_registrations (user_id, sport_name, full_name, age,
+            year_level, email, phone_number, prior_experience, additional_comments, created_at) 
+            VALUES (:user_id, :sport_name, :full_name, :age, :year_level, :email, :phone_number,
+            :prior_experience, :additional_comments, NOW())");
+            
+            $age_int = intval($age);
             
             $stmt->bindParam(':user_id', $user_id);
             $stmt->bindParam(':sport_name', $sport_name);
             $stmt->bindParam(':full_name', $full_name);
-            $stmt->bindParam(':age', $age);
+            $stmt->bindParam(':age', $age_int);
             $stmt->bindParam(':year_level', $year_level);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':phone_number', $phone_number);
@@ -198,7 +215,7 @@ try {
             color: white;
             border-radius: 20px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 22px;
         }
         .registration-date {
             color: #666;
@@ -242,7 +259,7 @@ try {
     <a href="https://www.hhs.school.nz/" target="_blank">
         <img src="photos/hendersonhigh.png" alt="Henderson High School Logo" class="logo">
     </a>
-    <div id="sidebar">
+    <div id="navbar">
         <ul>
             <li><a href="index.html" target='_blank' id="current">Home</a></li>
             <li>
@@ -250,7 +267,7 @@ try {
                 <ul class="dropdown">
                     <li><a href="basketball.html" target="_blank">Basketball</a></li>
                     <li><a href="football.html" target="_blank">Football</a></li>
-                    <li><a href="hockey.html" target="_blank">Hockey</a></li>
+                    <li><a href="netball.html" target="_blank">Netball</a></li>
                 </ul>
             </li>
             <li><a href="reg.php" target="_blank">Sign Ups</a></li>
@@ -270,14 +287,15 @@ try {
             <a href="reg.php" class="logout-btn">Logout</a>
         </div>
 
-        <?php if (!empty($message)): ?>
-            <div class="message <?php echo $messageType; ?>">
-                <?php echo htmlspecialchars($message); ?>
-            </div>
-        <?php endif; ?>
-
         <div class="form-container">
             <h2>Sports Registration Form</h2>
+            
+            <?php if (!empty($message)): ?>
+                <div class="message <?php echo $messageType; ?>">
+                    <?php echo $message; ?>
+                </div>
+            <?php endif; ?>
+            
             <form method="POST" action="">
                 <div class="form-row">
                     <div class="form-group">
@@ -299,7 +317,7 @@ try {
                 <div class="form-row">
                     <div class="form-group">
                         <label for="age">Age <span class="required">*</span></label>
-                        <input type="number" id="age" name="age" min="5" max="100" required>
+                        <input type="number" id="age" name="age" min="13" max="100" required>
                     </div>
 
                     <div class="form-group">

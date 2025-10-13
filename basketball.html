@@ -6,335 +6,433 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Henderson High School Basketball</title>
     <style>
 
+        /* GLOBAL STYLES */
+        
+        * {box-sizing: border-box;}  /* Include padding and border in element width/height */
+
         body {
             background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            width: 100vw;
         }
 
-        #intro {
-            background-image: linear-gradient(#9b274261, rgba(199, 205, 218, 0.4)), url('photos/basketballteam.jpeg');
+        /* Gradient overlay on basketball team photo */
+        #intro {background-image: linear-gradient(#9b274261, rgba(199, 205, 218, 0.4)), url('photos/basketballteam.jpeg');}
+
+
+        /* LOGO CONFIG */
+        .logo {
+            width: 205px; /* Logo width */
+            height: 155px; /* Logo height */
         }
 
-        .container {
-            max-width: 1800px;
-            margin: 5% 3% 0 5%;
-            padding: 30px 20px;
-            display: flex;
-            gap: 30px;
-            align-items: flex-start;
-        }
 
+        /* [LATEST NEWS SECTION] */
         .news {
-            flex: 2;
+            flex: 2; /* Take up 2/3 of available space */
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            padding: 24px;
+            border-radius: 0.75rem; /* Rounded corners */
+            box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.08); /* Subtle shadow effect */
+            padding: 1.5rem;
+            margin-left: 2.5%;
+        }
+        
+        /*Spot for the photos*/
+        .container {
+            max-width: 112.5rem; /* Maximum width 1800px */
+            margin: 5% auto 0; /* Top margin 5%, centered horizontally */
+            padding: 1.875rem 1.25rem; /* Vertical 30px, horizontal 20px padding */
+            display: flex; /* Use flexbox layout */
+            gap: 1.875rem; /* 30px gap between flex items */
+            align-items: flex-start; /* Align items to top */
+            justify-content: center; /* Center items horizontally */
         }
 
         .news h1 {
-            font-size: 50px;
-            margin-bottom: 30px;
+            font-size: clamp(2rem, 4vw, 3.125rem); /* Responsive: 32px to 50px */
+            margin: 0 0 1.875rem 0; /* Bottom margin 30px */
             color: #9b2743;
         }
 
+        /* Photo grid layout */
         .photos-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            display: grid; /* Use CSS Grid */
+            grid-template-columns: repeat(2, 1fr); /* 2 equal columns of 2 phots */
+            gap: 1.5rem; /* 24px gap between grid items */
         }
 
+        /* INDIV PHOTO CONTAINERS */
         .photo_container {
-            background: #fafafa;
-            border-radius: 8px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-            padding: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .photo_container p {
-            align-items: center;
+            background: #f4f2f2;
+            border-radius: 0.5rem; /*rounded corners */
+            box-shadow: 0 0.0625rem 0.25rem rgba(0,0,0,0.06); /* Very subtle shadow */
+            display: flex; /* Use flexbox */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
         }
 
         .photo_container img {
-            width: 100%;
-            max-width: 600px;
-            height: 500px;
-            border-radius: 6px;
-            margin-bottom: 8px;
-            object-fit: cover;  /* Add this to ensure proper image fitting */
+            width: 100%; /* Full width of container */
+            max-width: 26rem;
+            height: auto; /* Adjust height */
+            aspect-ratio: 3/4; /* Portrait orientation (3:4 ratio) */
+            border-radius: 0.375rem; /* Rounded corners */
+            margin: 1rem 0; /* top and bot margin 16px */
+            object-fit: cover; /* Cover the entire area, crop if needed */
         }
 
-        @media (max-width: 700px) {
-            .photos-grid {
-                grid-template-columns: 1fr;
-            }
+        .photo_container p {
+            font-size: clamp(0.875rem, 1.5vw, 1rem); /* Responsive: 14px to 16px */
+            text-align: center; /* Center text */
+            margin: 0.5rem 0; /* top and bot margin 8px */
         }
 
-        /* Schedule section styles unchanged from before except width added */
+        /* GAME SCHEDULES SECTION */
         .schedule-section {
-            flex: 1;
-            position: sticky;
-            top: 20px;
-            height: fit-content;
-            min-width: 340px;
-            max-width: 400px;
+            flex: 1; /* Take up 1/3 of available space */
+            position: sticky; /* Stick to viewport when scrolling */
+            top: 1.25rem;
+            height: fit-content; /* Height based on content */
+            min-width: min(100%, 21.25rem); /* Minimum width differs */
+            max-width: 25rem; /* Maximum width 400px */
+            margin-right: 1.5rem;
         }
 
         .schedule-header {
             background: #9b2743;
             color: white;
-            padding: 20px;
-            border-radius: 12px 12px 0 0;
-            text-align: center;
+            padding: 1.25rem; /* 20px padding all sides */
+            border-radius: 0.75rem 0.75rem 0 0; /* Rounded top corners only */
+            text-align: center; /* Center text */
+            position: sticky; /* Sticky header */
+        }
+
+        .schedule-header h2 {
+            margin: 0; /* Remove default margin */
+            font-size: clamp(1.25rem, 2vw, 1.5rem); /* Responsive: 20px to 24px */
         }
 
         .schedule-content {
-            background: white;
-            border-radius: 0 0 12px 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            max-height: 70vh;
-            overflow-y: auto;
+            background: white; /* White background */
+            border-radius: 0 0 0.75rem 0.75rem; /* Rounded bottom corners only */
+            box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.1); /* Shadow for depth */
+            max-height: 70vh; /* Maximum height 70% of viewport */
+            overflow-y: auto; /* Vertical scroll need */
         }
 
+        /* Individual game items */
         .game-item {
-            padding: 20px;
-            border-bottom: 1px solid #e0e0e0;
+            padding: 1.25rem; /* 20px padding all sides */
+            border-bottom: 0.0625rem solid #e0e0e0; /* Bottom border separator */
             transition: background 0.2s;
         }
 
         .game-item:hover {
-            background: #f9f9f9;
+            background: #f9f9f9; /* Light gray background on hover */
         }
 
         .game-item:last-child {
-            border-bottom: none;
+            border-bottom: none; /* Remove border from last item */
         }
 
         .game-date {
             color: #8B1538;
-            font-weight: 600;
-            font-size: 0.9em;
-            margin-bottom: 8px;
+            font-weight: 600; /*light bold*/
+            font-size: 0.9em; /* 90% of parent font size */
+            margin-bottom: 0.5rem;
         }
 
         .game-opponent {
             font-weight: 600;
-            font-size: 1.1em;
+            font-size: 1.1em; /* 110% of parent font size */
             color: #333;
         }
 
         .game-location {
-            font-size: 0.9em;
+            font-size: 0.9em; /* 90% of parent font size */
             color: #666;
         }
 
-        .view-full {
-            padding: 20px;
-            text-align: center;
-        }
 
-        .view-full a {
-            color: #8B1538;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            padding: 10px 20px;
-            border: 2px solid #9b2743;
-            border-radius: 6px;
-            transition: all 0.3s;
-        }
-
-        .view-full a:hover {
-            background: #9b2743;
-            color: white;
-        }
-
-        @media (max-width: 1024px) {
-            .container {
-                flex-direction: column;
-            }
-
-            .schedule-section {
-                position: relative;
-                top: 0;
-                max-width: 100%;
-                min-width: 0;
-                width: 100%;
-            }
-            .news {
-                width: 100%;
-            }
-        }
-
-        /*PHOTOS START HERE*/
-
+        /* [GALLERY SECTION] */
         #gallery {
-            max-width: 90rem; /* Or whatever max-width works for your content */
-            margin: 0 auto; /* Centers the gallery */
-            padding: 6.25rem 4% 6.25rem 13%; /* Percentage padding maintains proportional spacing */
+            max-width: 100vw; /* Full viewport width */
+            margin: 0 auto; /* Center horizontally */
+            padding: 6.25rem 4%; /* paddings */
             background-color: rgb(211, 204, 204);
-            width: 100%
+            width: 100%; /* Full width */
         }
 
         #gallery > h1 {
-            font-size: 70px;
-            margin-top: 0;
-            padding-top: 100px;
-            margin-left: -1%;
-            margin-bottom: 50px;
+            font-size: clamp(2.5rem, 6vw, 4.375rem); /* Responsive: 40px to 70px */
+            margin: 0 0 5.5rem 5rem;
+            padding-top: 6.25rem;
             color: rgb(46, 45, 45);
+            text-align: left; /* place text on the left side */
         }
 
+        /*For image backgrounds*/
+        .gallery-container {
+            display: flex; /* Use flexbox */
+            justify-content: center; /* Center items horizontally */
+            gap: 0; /* No gap between items */
+            flex-wrap: wrap; /* Wrap items to next line if needed */
+        }
+
+        /* Gallery photo items */
         .photos {
-            width: 400px;
-            height: 600px;
-            overflow: hidden;
-            position: relative;
-            display: inline-block;
-            margin-right: -10px;
-            margin-bottom: 80px;
+            width: 100%; /* Full width */
+            max-width: 25rem;
+            aspect-ratio: 2/3; /* Portrait orientation (2:3 ratio) */
+            overflow: hidden; /* Hide overflow */
+            position: relative; /* For caption positioning */
+            margin: 0 0 5rem 0;
         }
 
+        /* Photo background images */
         .childOne, .childTwo, .childThree {
-            height: 100%;
-            width: 100%;
-            background-size: cover;
+            height: 100%; /* Full height */
+            width: 100%; /* Full width */
+            background-size: cover; /* Cover entire area */
+            background-position: center; /* Center background */
             transition: all 0.5s;
         }
 
-        .childOne {
-            background-image: url('https://picsum.photos/id/1067/450/700');
-        }
+        /* Diff photo backgrounds */
 
-        .childTwo {
-            background-image: url('https://picsum.photos/id/122/450/700');
-        }
+        /* Photo 1 */
+        .childOne {background-image: linear-gradient(#312d2e19, rgba(4, 4, 4, 0.4)), url('photos/bbphoto1.png');}
+        /* Photo 2 */
+        .childTwo {background-image: linear-gradient(#312d2e19, rgba(4, 4, 4, 0.4)), url('photos/bbphoto2.png');}
+        /* Photo 3 */
+        .childThree {background-image: linear-gradient(#312d2e19, rgba(4, 4, 4, 0.4)), url('photos/bbphoto3.png');}
 
-        .childThree {
-            background-image: url('https://picsum.photos/id/1015/450/700');
-        }
-
+        /* Zoom effect on hover */
         .photos:hover .childOne, 
         .photos:hover .childTwo, 
         .photos:hover .childThree {
-            transform: scale(1.2);
+            transform: scale(1.2); /* Increase size onhover */
         }
 
+        /* Photo captions overlay */
         .photo-caption {
-            position: absolute;
-            bottom: 20px;
-            left: 30px;
+            position: absolute; /* Positioned absolute within the div */
+            bottom: 1.25rem;
+            left: 1.875rem;
             color: white;
-            z-index: 500;
+            z-index: 500; /* On top if intersects */
         }
 
         .photo-caption h2 {
-            font-size: 1.5em;
-            margin-bottom: 5px;
+            font-size: clamp(1.125rem, 2vw, 1.5rem); /* Responsive: 18px to 24px */
+            margin: 0 0 0.3125rem 0;
             font-weight: 600;
         }
 
         .photo-caption h3 {
-            font-size: 1em;
+            font-size: clamp(0.875rem, 1.5vw, 1rem); /* Responsive: 14px to 16px */
             font-weight: 300;
+            margin: 0; /* Remove default margin */
         }
 
 
+        /* SIGNUPS SECTION  */
         .signups {
-            width: 100%;
-            margin: 0;
-            padding: 150px 0 500px 0;
+            width: 100%; /* Full width */
+            margin: 0; /* Remove default margin */
+            padding: 12.5rem 2%;
             background-image: url('photos/bball.jpg');
-            position: relative;
-            overflow-x:auto;
-            overflow-y:auto;
-            word-wrap: break-word;
-            background-size: cover;
-            display: block;
-            padding-left: 110px;
-            padding-top: 200px;
+            background-size: cover; /* Cover entire area */
+            background-position: center; /* Center background */
+            position: relative; /* Positioned relative */
+            overflow: hidden; /* Hide overflow */
+            text-align: center; /* Center text */
+            display: flex; /* Use flexbox */
+            flex-wrap: wrap; /* Wrap items to next line */
+            justify-content: center; /* Center items horizontally */
+            align-items: flex-start; /* Align items to top */
+            gap: 2rem; /* 32px gap between items */
         }
 
-        @media (min-width: 768px) {
-            .signups {
-                min-height: 250px;
-            }
-        }
+        /* INFORMATION CARDS */
 
-        @media (min-width: 1025px) {
-            .signups {
-                background-attachment: fixed;
-            }
-        }
-
+        /* The small ones */
         .information {
             background: rgb(232, 228, 228);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            width: 100%;
-            max-width: 300px;
-            display: inline-block;
-            margin-right: 70px;
+            padding: 2.5rem;
+            border-radius: 0.625rem; /* rounded corners */
+            box-shadow: 0.625rem 0.625rem 0.625rem darkslategray; /* Shadow effect */
+            width: 100%; /* Full width */
+            flex: 0 1 24rem; /* normal 384px, cant grow, can shrink */
         }
 
         .information > h1 {
-            font-size: 30px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            align-items: center;
-            margin-left: 30px;
+            font-size: clamp(1.5rem, 3vw, 1.875rem); /* Responsive: 24px to 30px */
+            font-family: "Merriweather", serif;
+            font-weight: bold;
+            color: #db3f00;
+            margin: 0 0 1rem 0;
         }
 
         .information > h3 {
-            font-size: 15px;
+            font-size: clamp(0.875rem, 1.5vw, 0.9375rem); /* Responsive: 14px to 15px */
             font-weight: 300;
-            margin-left: 60px;
+            margin: 0.5rem 0;
         }
 
+        /* The big card */
         .information_main {
             background: rgb(232, 228, 228);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            width: 100%;
-            max-width: 1210px;
-            height: 500px;
-            display: inline-block;
-            margin-right: 70px;
-            margin-top: 100px;
+            padding: 2.5rem; /* 40px padding all sides */
+            border-radius: 0.625rem; /* rounded corners */
+            box-shadow: 0.625rem 0.625rem 0.625rem darkslategray; /* Shadow effect */
+            width: 100%; /* Full width */
+            max-width: 75.625rem; /* Maximum width 1210px */
+            min-height: 43.75rem; /* Minimum height 700px */
+            flex: 1 1 100%; /* Flexible, can grow and shrink */
+            margin-top: 4rem;
         }
 
+        .information_main > h1 {
+            font-size: clamp(2.5rem, 6vw, 5.3125rem); /* Responsive: 40px to 85px */
+            font-family: "Playfair Display", serif;
+            color: rgb(29, 47, 47);
+            margin: 2rem 0; /* top and bot margin 32px */
+        }
+
+        .information_main > h3 {
+            color: black;
+            font-size: clamp(0.875rem, 1.5vw, 0.9375rem); /* Responsive: 14px to 15px */
+            font-family: "Cinzel", serif;
+            line-height: 1.5; /* Make text lines separated */
+            margin: 1rem 3rem 7rem;
+        }
+
+        /* Register button */
+        .information_main > button {
+            background: #241e20;
+            border: none; /* Remove default border */
+            border-radius: 0.625rem; /* rounded corners */
+            padding: 1rem 3rem;
+            font-size: clamp(1rem, 2vw, 1.25rem); /* Responsive: 16px to 20px */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            box-shadow: 0.3125rem 0.4375rem 0.625rem #888888;
+            text-align: center; /* Center text */
+            display: inline-block;
+            transition: transform 0.4s ease-in-out;
+            margin: 1rem; /* 16px margin all sides */
+        }
+
+        /*On button hover*/
+        .information_main > button:hover {
+            transform: scale(1.2); /* Scale to 120% on hover */
+            cursor: pointer; /* Show pointer cursor */
+        }
+
+        /*Text inside button*/
+        .information_main > button > a {
+            color: white;
+            text-decoration: none; /* Remove underline */
+        }
+
+
+        /*RESPONSIVE MEDIA QUERIES*/
+
+        /*  RESPONSIVE GALLERY SECTION*/
+        @media (max-width: 48rem) {
+            #gallery {
+                padding: 4rem 4%; /* Reduce vertical padding to 64px */
+            }
+
+            #gallery > h1 {
+                padding-top: 2rem; /* Reduce top padding to 32px */
+                text-align: center; /* Center text on mobile */
+            }
+
+            .gallery-container {
+                flex-direction: column; /* Stack items vertically */
+                align-items: center; /* Center items horizontally */
+            }
+
+            .photos {
+                margin: 0 auto 3rem; /* Bottom margin 48px, centered */
+                max-width: 90%; /* 90% width on mobile */
+            }
+        }
+
+        /* Photos for mobile */
+        @media (max-width: 48rem) {
+            .photos-grid {
+                grid-template-columns: 1fr; /* Single column on mobile */
+            }
+        }
+        
+        /* RESPONSIVE SCHEDULE SECTION */
+        @media (max-width: 64rem) {
+            /* Stack items vertically */
+            .container {flex-direction: column;}
+
+            .schedule-section {
+                position: relative; /* Remove sticky positioning */
+                top: 0; /* Bring to top */
+                max-width: 100%;
+                min-width: 0; /* Remove mini width */
+                width: 100%; /* Full width */
+            }
+            
+            /* Full width */
+            .news {width: 100%;}
+        }
+        
+        /* Fixed parallax effect SIGNUPS SECTION */
+        @media (min-width: 64.0625rem) {
+            /* Background stays fixed while scrolling */
+            .signups {background-attachment: fixed;}
+        }
+
+        /* RESPONSIVE SIGNUPS SECTION */
+        @media (max-width: 48rem) {
+            .signups {padding: 4rem 2%;}  /* Reduce vertical padding to 64px */
+
+            .information, .information_main {
+                max-width: 100%; /* Full width on mobile */
+                flex: 1 1 100%; /* Full flexible width */
+            }
+
+            .information_main {
+                margin-top: 2rem; /* Reduce top margin to 32px */
+                min-height: auto; /* Remove minimum height */
+                padding: 2rem 1.5rem; /* Reduce padding: vertical 32px, horizontal 24px */
+            }
+        }
     </style>
 </head>
 <body>
-    <a href = 'https://www.hhs.school.nz/' target="_blank"><img src = 'photos/hendersonhigh.png' alt = 'Henderson High School Logo' class = 'logo'></a>
-    <div id="sidebar">  <!-- Navbar -->
+    <a href='https://www.hhs.school.nz/' target="_blank"><img src='photos/hendersonhigh.png' alt='Henderson High School Logo' class='logo'></a>
+    <div id ="navbar">
         <ul>
-            <li><a href="index.html" id = 'current'>Home</a></li>
+            <li><a href="index.html" target="_blank" id='current'>Home</a></li>
             <li>
-                <a href="#" id = 'sports'>Sports ▾</a>
-                <ul class="dropdown">  <!-- Dropdown all sports -->
+                <a href="#" id='sports'>Sports ▾</a>
+                <ul class="dropdown">
                     <li><a href="basketball.html" target="_blank">Basketball</a></li>
                     <li><a href="football.html" target="_blank">Football</a></li>
-                    <li><a href="hockey.html" target="_blank">Hockey</a></li>
+                    <li><a href="netball.html" target="_blank">Netball</a></li>
                 </ul>
             </li>
             <li><a href="reg.php" target="_blank">Sign Up</a></li>
         </ul>
     </div>
-    <div id = 'top'>
-        <button class="openbtn" onclick="openNav()">☰ Menu</button>   <!-- Click button to expand nav -->
+    <div id='top'>
+        <button class="openbtn" onclick="openNav()">☰ Menu</button>
     </div>
-    <div id = "intro">
+    <div id="intro">
         <h1>Henderson High School <br> Basketball </h1>
         <button><a href="https://www.hhs.school.nz/" target="_blank">About Us</a></button>  
     </div>
@@ -343,20 +441,12 @@
             <h1>LATEST NEWS:</h1>
             <div class="photos-grid">
                 <div class="photo_container">
-                    <img src="https://picsum.photos/id/1067/540/720">
-                    <p>Lorem ipsum dolor sit, amet consectetur Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <img src="photos/bbphoto3.png" alt="Basketball news 1">
+                    <p><strong>Henderson High School Basketball Tournament</strong><br><br>Henderson High School Tournament Team joins the Northern Cup</p>
                 </div>
                 <div class="photo_container">
-                    <img src="https://picsum.photos/id/122/540/720">
-                    <p>Lorem ipsum dolor sit, amet consectetur Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </div>
-                <div class="photo_container">
-                    <img src="https://picsum.photos/id/1015/540/720">
-                    <p>Lorem ipsum dolor sit, amet consectetur Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </div>
-                <div class="photo_container">
-                    <img src="https://picsum.photos/id/1016/540/720">
-                    <p>Lorem ipsum dolor sit, amet consectetur Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <img src="photos/basketball.png" alt="Basketball news 2">
+                    <p><strong>Henderson High School Basketball Champions </strong><br><br>Henderson High School Basketball wins the Championship Game</p>
                 </div>
             </div>
         </div>
@@ -395,108 +485,61 @@
                         </div>
                     </div>
                 </div>
-                <div class="game-item">
-                    <div class="game-date">NOV. 6 • 7:00 P.M.</div>
-                    <div class="game-details">
-                        <div class="team-logo">🏀</div>
-                        <div class="game-info">
-                            <div class="game-opponent">Men's Basketball</div>
-                            <div class="game-location">at St Peter's College</div>
-                        </div>
-                    </div>
-                </div>
            </div>
         </div>   
     </div>  
     <div id="gallery">
         <h1>GALLERY</h1>
-        <div class="photos">
-            <div class="childOne"></div>
-            <div class="photo-caption">
-                <h2>Men's Basketball</h2>
-                <h3>April 28, 2024: Henderson vs Onehunga</h3>
+        <div class="gallery-container">
+            <div class="photos">
+                <div class="childOne"></div>
+                <div class="photo-caption">
+                    <h2>Men's Basketball</h2>
+                    <h3>September 3rd: Henderson Northern Cup Tournament</h3>
+                </div>
             </div>
-        </div>
-        <div class="photos">
-            <div class="childTwo"></div>
-            <div class="photo-caption">
-                <h2>Men's Basketball</h2>
-                <h3>April 28, 2024: Henderson vs Onehunga</h3>
+            <div class="photos">
+                <div class="childTwo"></div>
+                <div class="photo-caption">
+                    <h2>Men's Basketball</h2>
+                    <h3>September 3rd: Henderson Northern Cup Tournament</h3>
+                </div>
             </div>
-        </div>
-        <div class="photos">
-            <div class="childThree"></div>
-            <div class="photo-caption">
-                <h2>Men's Basketball</h2>
-                <h3>April 28, 2024: Henderson vs Onehunga</h3>
+            <div class="photos">
+                <div class="childThree"></div>
+                <div class="photo-caption">
+                    <h2>Men's Basketball</h2>
+                    <h3>September 3rd: Henderson Northern Cup Tournament</h3>
+                </div>
             </div>
         </div>
     </div>
-    <div class = 'signups'>
+    <div class='signups'>
         <div class="information">
             <h1>TRAINING TIMES</h1>
             <h3>Tuesdays: 3:00 PM - 5:00 PM</h3>
             <h3>Thursdays: 4:00 PM - 6:00 PM</h3>
         </div>
         <div class="information">
-            <h1>TRAINING TIMES</h1>
-            <h3>Tuesdays: 3:00 PM - 5:00 PM</h3>
-            <h3>Thursdays: 4:00 PM - 6:00 PM</h3>
+            <h1>ACHIEVEMENTS</h1>
+            <h3>2024: Waitakere Open B Runner Ups</h3>
+            <h3>2025: Waitakere Open B Champions</h3>
         </div>
         <div class="information">
-            <h1>CHAMPIONSHIPS</h1>
-            <h3>Tuesdays: 3:00 PM - 5:00 PM</h3>
-            <h3>Thursdays: 4:00 PM - 6:00 PM</h3>
+            <h1>COACHES</h1>
+            <h3>Coach: Coach Blaze Hendl</h3>
+            <h3>Assistant Coach: Coach Nigel</h3>
         </div>
         <div class="information_main">
             <h1>Why Choose Us?</h1>
-            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
-                Dolor quae, quibusdam consequuntur corrupti beatae natus laudantium quasi ea. <br>
-                Facere, adipisci! Dolore, sit consequatur! Molestiae quidem beatae veniam <br>
-                repudiandae tempora delectus!</h3>
+            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor quae, quibusdam consequuntur corrupti beatae natus laudantium quasi ea.
+                Facere, adipisci! Dolore, sit consequatur! Molestiae quidem beatae veniam repudiandae tempora delectus! Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Dolor quae, quibusdam consequuntur corrupti beatae natus laudantium quasi ea. Facere,
+                adipisci! Dolore, sit consequatur! Molestiae quidem beatae veniam repudiandae tempora delectus!</h3>
             <h1>Interested?</h1>
-            <button>Register</button>
+            <button><a href="reg.php" target="_blank">Register</a></button>
         </div>
     </div>
-    <script>
-        function openNav() {
-            var sidebar = document.getElementById("sidebar");
-            sidebar.classList.toggle("open");
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            var h1 = document.querySelector('#intro > h1');
-            var h2 = document.querySelector('#intro > button');
-            if (!h1) return;
-            var observer = new window.IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        h1.classList.add('slide-in');
-                        h2.classList.add('slide-in');
-                    } else {
-                        h1.classList.remove('slide-in');
-                        h2.classList.remove('slide-in');
-                    }
-                });
-            }, { threshold: 0.1 });
-            observer.observe(h1);
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            var intro = document.getElementById('intro');
-            var logo = document.querySelector('.logo');
-            var observer = new window.IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    logo.classList.add('logo-hidden');
-                    logo.classLis.remove('logo-shown');
-                } else {
-                    logo.classList.add('logo-shown');
-                    logo.classList.remove('logo-hidden');
-                }
-                });
-            }, { threshold: 0.1 });
-            observer.observe(intro);
-            });
-    </script>
+    <script src="script.js"></script>
 </body>
+</html>
