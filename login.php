@@ -87,6 +87,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             text-decoration: none;
             font-weight: 600;
         }
+        
+        .forgot-password {
+            text-align: right;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        .forgot-password a {
+            color: #9b2743;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
 
     </style>
 </head>
@@ -94,15 +106,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <a href="https://www.hhs.school.nz/" target="_blank">
         <img src="photos/hendersonhigh.png" alt="Henderson High School Logo" class="logo">
     </a>
-    <div id="navbar">
+    <div id="sidebar">
         <ul>
             <li><a href="index.html" target='_blank' id="current">Home</a></li>
             <li>
                 <a href="#" id="sports">Sports ▾</a>
                 <ul class="dropdown">
                     <li><a href="basketball.html" target="_blank">Basketball</a></li>
-                    <li><a href="basketball.html" target="_blank">Football</a></li>
-                    <li><a href="netball.html" target="_blank">Netball</a></li>
+                    <li><a href="football.html" target="_blank">Football</a></li>
+                    <li><a href="hockey.html" target="_blank">Hockey</a></li>
                 </ul>
             </li>
             <li><a href="reg.php" target="_blank">Sign Ups</a></li>
@@ -130,7 +142,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
-            </div>    
+            </div>
+            
+            <div class="forgot-password">
+                <a href="forgot-password.php">Forgot Password?</a>
+            </div>
+            
             <button type="submit" class="btn">Login</button>
         </form>
         

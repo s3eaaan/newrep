@@ -21,7 +21,7 @@
                     <li><a href="hockey.html" target="_blank">Hockey</a></li>
                 </ul>
             </li>
-            <li><a href="reg.php" target="_blank">Sign Ups</a></li>
+            <li><a href="index.php" target="_blank">Sign Ups</a></li>
         </ul>
     </div>
     <div id="top">
